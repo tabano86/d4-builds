@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blessed Hammer Paladin - D4 S11</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font: 15px/1.6 system-ui, -apple-system, sans-serif; background: #0a0a0a; color: #ccc; }
+
+    /* Layout */
+    .wrapper { display: flex; min-height: 100vh; }
+
+    /* Sidebar */
+    nav { position: sticky; top: 0; height: 100vh; width: 200px; min-width: 200px; background: #080808; border-right: 1px solid #1a1a1a; padding: 1rem; overflow-y: auto; }
+    nav h3 { color: #f0b90b; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; margin: 1rem 0 0.5rem; }
+    nav h3:first-child { margin-top: 0; }
+    nav a { display: block; color: #666; text-decoration: none; font-size: 0.8rem; padding: 0.3rem 0.5rem; border-left: 2px solid transparent; margin-left: -0.5rem; }
+    nav a:hover, nav a.active { color: #f0b90b; border-color: #f0b90b; }
+    nav .priority { color: #4ade80; }
+
+    /* Main content */
+    main { flex: 1; max-width: 900px; padding: 2rem; }
+
+    /* Typography */
+    h1 { color: #f0b90b; margin-bottom: 0.25rem; }
+    .sub { color: #666; margin-bottom: 1.5rem; }
+    h2 { color: #f0b90b; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #222; }
+    h3 { color: #888; font-size: 0.9rem; margin: 1.5rem 0 0.75rem; }
+    h4 { color: #666; font-size: 0.85rem; margin: 1rem 0 0.5rem; }
+    p { margin: 0.5rem 0; }
+
+    /* Boxes */
+    .box { background: #111; border: 1px solid #1a1a1a; border-radius: 6px; padding: 1rem; margin: 1rem 0; }
+    .highlight { background: #0f1a0f; border-color: #1a2a1a; }
+    .warn { background: #1a0f0f; border-color: #2a1a1a; }
+    .info { background: #0f0f1a; border-color: #1a1a2a; }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 0.5rem 0; }
+    td, th { padding: 0.5rem; text-align: left; border-bottom: 1px solid #1a1a1a; }
+    th { color: #666; font-size: 0.75rem; text-transform: uppercase; }
+
+    /* Colors */
+    .g { color: #4ade80; }
+    .y { color: #f0b90b; }
+    .r { color: #f87171; }
+    .p { color: #c084fc; }
+    .b { color: #60a5fa; }
+    .dim { color: #666; }
+
+    /* Code */
+    code { background: #1a1a1a; padding: 0.15rem 0.4rem; border-radius: 3px; font-size: 0.85rem; }
+    pre { background: #0d0d0d; border: 1px solid #1a1a1a; padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 0.75rem 0; font-size: 0.85rem; line-height: 1.5; }
+
+    /* Sections */
+    section { display: none; }
+    section.active { display: block; }
+
+    /* Links */
+    a { color: #f0b90b; }
+
+    /* Lists */
+    ul, ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+    li { margin: 0.25rem 0; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .wrapper { flex-direction: column; }
+      nav { position: relative; width: 100%; height: auto; min-width: 100%; border-right: none; border-bottom: 1px solid #1a1a1a; }
+      nav a { display: inline-block; margin: 0.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="wrapper">
+<nav>
+  <h3>Quick</h3>
+  <a href="#" data-section="overview" class="priority active">Overview</a>
+  <a href="#" data-section="skillbar" class="priority">Skill Bar</a>
+  <a href="#" data-section="rotation" class="priority">Rotation</a>
+  <a href="#" data-section="paragon" class="priority">Paragon</a>
+
+  <h3>Leveling</h3>
+  <a href="#" data-section="lv1">Levels 1-14</a>
+  <a href="#" data-section="lv15">Levels 15-34</a>
+  <a href="#" data-section="lv35">Levels 35-50</a>
+
+  <h3>Endgame</h3>
+  <a href="#" data-section="gear">Gear</a>
+  <a href="#" data-section="uniques" class="priority">Uniques & Farming</a>
+  <a href="#" data-section="tempering">Tempering</a>
+  <a href="#" data-section="stats">Stat Caps</a>
+  <a href="#" data-section="pit">Pit Progression</a>
+  <a href="#" data-section="mercenary">Mercenary</a>
+
+  <h3>Reference</h3>
+  <a href="#" data-section="gems">Gems & Runes</a>
+  <a href="#" data-section="aspects">Aspects</a>
+  <a href="#" data-section="skilltree">Full Skill Tree</a>
+  <a href="#" data-section="problems">Troubleshooting</a>
+</nav>
+
+<main>
+
+<!-- OVERVIEW -->
+<section id="overview" class="active">
+  <h1>BLESSED HAMMER PALADIN</h1>
+  <p class="sub">Speed Hammerdin | Pit 100-130 | Season 11</p>
+
+  <div class="box highlight">
+    <strong class="g">THE BUILD:</strong> Argent Veil makes Evade spawn Blessed Hammers. Rally (with Words of Sacrifice) resets Evade cooldown because it counts as an attack. Result: <strong>Evade → Rally → Evade → Rally</strong> = infinite hammer tornado while flying through maps.
+  </div>
+
+  <h3>Benchmarks</h3>
+  <div class="box">
+    <table>
+      <tr><td class="y"><strong>Pit 100</strong></td><td>~2 minutes</td></tr>
+      <tr><td class="y"><strong>Pit 110</strong></td><td>~3 minutes</td></tr>
+      <tr><td class="y"><strong>Pit 130</strong></td><td>~10 minutes (full BiS)</td></tr>
+    </table>
+  </div>
+
+  <h3>Key Passive</h3>
+  <p><strong class="y">EXALTATION</strong> (unlocks at level 34) - This is your damage multiplier.</p>
+
+  <h3>Oath</h3>
+  <p><strong class="p">DISCIPLE</strong> for speed farming (Arbiter form on cooldowns = 50% more damage)</p>
+  <p><strong class="b">JUDICATOR</strong> for pit pushing (Judgement detonations)</p>
+
+  <h3>Required Uniques</h3>
+  <div class="box">
+    <table>
+      <tr><td class="g"><strong>Argent Veil</strong></td><td>Ring</td><td>BUILD ENABLER - Evade casts Blessed Hammer</td></tr>
+      <tr><td class="g"><strong>Herald's Morningstar</strong></td><td>Weapon</td><td>+Hammer ranks and damage</td></tr>
+      <tr><td class="g"><strong>Herald of Zakarum</strong></td><td>Shield</td><td>Doubles your armor (Castle scaling)</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- SKILL BAR -->
+<section id="skillbar">
+  <h1>SKILL BAR</h1>
+
+  <h3>Endgame (With Argent Veil)</h3>
+  <div class="box">
+    <table>
+      <tr><td width="100"><strong>Left Click</strong></td><td class="p"><strong>Rally</strong></td><td class="dim">Spam constantly - resets Evade CD</td></tr>
+      <tr><td><strong>Right Click</strong></td><td class="r"><strong>Arbiter of Justice</strong></td><td class="dim">Auto-triggers from Disciple skills</td></tr>
+      <tr><td><strong>1</strong></td><td class="g"><strong>Falling Star</strong></td><td class="dim">Engage + triggers Arbiter</td></tr>
+      <tr><td><strong>2</strong></td><td class="g"><strong>Condemn</strong></td><td class="dim">Pull + Vulnerable + triggers Arbiter</td></tr>
+      <tr><td><strong>3</strong></td><td>Defiance Aura</td><td class="dim">ALWAYS ON - heals Rally HP cost</td></tr>
+      <tr><td><strong>4</strong></td><td>Fanaticism Aura</td><td class="dim">Attack speed buff</td></tr>
+      <tr><td><strong>Evade</strong></td><td class="y"><strong>SPACEBAR</strong></td><td class="dim">YOUR MAIN DAMAGE (Argent Veil)</td></tr>
+    </table>
+  </div>
+
+  <div class="box warn">
+    <strong class="r">NOTE:</strong> Arbiter MUST be on your skill bar. You don't press it manually - it triggers automatically from Falling Star/Condemn. Blessed Hammer is NOT on the bar because Evade casts it via Argent Veil.
+  </div>
+
+  <h3>Leveling (Before Argent Veil)</h3>
+  <div class="box">
+    <table>
+      <tr><td width="100"><strong>Basic</strong></td><td class="y"><strong>Advance</strong></td><td class="dim">SPAM THIS FOR FAITH</td></tr>
+      <tr><td><strong>Core</strong></td><td class="g"><strong>Blessed Hammer</strong></td><td class="dim">Your damage</td></tr>
+      <tr><td><strong>1</strong></td><td>Falling Star</td><td class="dim">Gap close (after 15)</td></tr>
+      <tr><td><strong>2</strong></td><td>Condemn</td><td class="dim">Grouping (after 18)</td></tr>
+      <tr><td><strong>3</strong></td><td>Defiance Aura</td><td class="dim">Keep active</td></tr>
+      <tr><td><strong>4</strong></td><td>Rally</td><td class="dim">Emergency Faith (after 12)</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ROTATION -->
+<section id="rotation">
+  <h1>ROTATION</h1>
+
+  <h3>Endgame Speed (With Argent Veil)</h3>
+  <div class="box highlight">
+    <pre>1. Falling Star into pack (triggers Arbiter)
+2. EVADE (Argent Veil spawns hammers)
+3. Rally (resets Evade CD)
+4. EVADE (more hammers)
+5. Rally
+6. Repeat while moving to next pack</pre>
+    <p style="margin-top:0.75rem"><strong class="g">TIP:</strong> Hold Rally (left click) while spamming Evade. You don't manually cast Blessed Hammer anymore.</p>
+  </div>
+
+  <h3>Pit Pushing</h3>
+  <div class="box">
+    <pre>1. Falling Star → Arbiter Form
+2. Condemn → Group + Vulnerable
+3. Blessed Hammer spam
+4. Evade for repositioning + hammer spawns
+5. Rally if you need movement</pre>
+  </div>
+
+  <h3>Leveling (Before 34)</h3>
+  <div class="box info">
+    <pre>1. Run up to enemies
+2. ADVANCE 2-3 times (builds Faith)
+3. Blessed Hammer 1 time
+4. ADVANCE 2-3 times (refill Faith)
+5. Blessed Hammer 1 time
+6. Repeat
+
+If Faith empty: Rally → Advance spam</pre>
+    <p style="margin-top:0.75rem"><strong class="y">THE GOLDEN RULE:</strong> 2 Advance hits for every 1 Hammer cast.</p>
+  </div>
+
+  <h3>After Level 34 (Exaltation)</h3>
+  <div class="box">
+    <pre>1. Falling Star into pack (triggers Arbiter)
+2. Condemn (groups + Vulnerable)
+3. Blessed Hammer x3 (they orbit you)
+4. Rally for speed
+5. Falling Star to next pack</pre>
+  </div>
+</section>
+
+<!-- PARAGON -->
+<section id="paragon">
+  <h1>PARAGON BOARDS</h1>
+
+  <div class="box warn">
+    <strong class="r">HOW TO PATH:</strong> Rush to <strong class="g">Legendary Node</strong> first → Socket <strong class="p">Glyph</strong> → Grab <strong class="b">Rare Nodes</strong> on the way → Skip white nodes unless needed for pathing
+  </div>
+
+  <h3>Board Order</h3>
+  <div class="box highlight">
+    <table>
+      <tr><th>#</th><th>Board</th><th>Glyph</th><th>Legendary Node</th></tr>
+      <tr><td>1</td><td>Starter</td><td class="p">Spirit</td><td class="dim">Glyph socket only</td></tr>
+      <tr><td>2</td><td class="y"><strong>Castle</strong></td><td class="p"><strong>Exploit</strong></td><td class="g"><strong>Castle - 1.8% of Armor = Damage</strong></td></tr>
+      <tr><td>3</td><td>Relentless</td><td class="p">Challenger</td><td>Dervish - CDR while moving</td></tr>
+      <tr><td>4</td><td>Shield Bearer</td><td class="p">Sentinel</td><td>Shield Bearer - Block doubles damage</td></tr>
+      <tr><td>5</td><td>Beacon</td><td class="p">Resplendence</td><td>Resplendent - Aura casts reset skills</td></tr>
+    </table>
+  </div>
+
+  <div class="box highlight">
+    <strong class="y">PRIORITY:</strong> Rush <strong>Castle</strong> board FIRST. Herald of Zakarum doubles your armor, Castle converts that armor into damage. This is where your damage comes from.
+  </div>
+
+  <h3>Paragon Planners</h3>
+  <div class="box">
+    <p>Use these interactive planners to visualize the exact pathing:</p>
+    <ul style="margin:0.5rem 0;padding-left:1.5rem">
+      <li><a href="https://maxroll.gg/d4/build-guides/blessed-hammer-paladin-guide" target="_blank" class="g">Maxroll - Blessed Hammer Paladin</a> (Interactive planner + full guide)</li>
+      <li><a href="https://mobalytics.gg/diablo-4/builds/paladin" target="_blank" class="b">Mobalytics - Paladin Builds</a></li>
+      <li><a href="https://d4builds.gg/builds/?class=paladin" target="_blank" class="p">D4Builds.gg - Paladin</a> (Community builds)</li>
+    </ul>
+  </div>
+
+  <h3>Glyph Leveling Priority</h3>
+  <div class="box">
+    <table>
+      <tr><td>1.</td><td class="g"><strong>Exploit</strong></td><td>Vulnerable damage</td><td>Level to 15 FIRST</td></tr>
+      <tr><td>2.</td><td class="g"><strong>Challenger</strong></td><td>Damage while moving</td><td>You're always moving</td></tr>
+      <tr><td>3.</td><td>Spirit</td><td>Core skill damage</td><td>Starter board</td></tr>
+      <tr><td>4.</td><td>Sentinel</td><td>DR when blocking</td><td>Shield Bearer board</td></tr>
+      <tr><td>5.</td><td>Resplendence</td><td>Healing effectiveness</td><td>Sustains Rally HP</td></tr>
+    </table>
+  </div>
+
+  <h3>Glyph Leveling Tips</h3>
+  <div class="box">
+    <table>
+      <tr><td class="g"><strong>Pit 60-80</strong></td><td>Best XP/time ratio for leveling glyphs</td></tr>
+      <tr><td><strong>Level 15</strong></td><td>Unlocks radius bonus - HUGE power spike</td></tr>
+      <tr><td><strong>Level 21</strong></td><td>Max useful level (diminishing returns after 15)</td></tr>
+      <tr><td class="y"><strong>Priority</strong></td><td>Get ALL glyphs to 15 before pushing any to 21</td></tr>
+    </table>
+  </div>
+
+  <h3>Key Rare Nodes By Board</h3>
+  <div class="box">
+    <table>
+      <tr><td><strong>Starter</strong></td><td>Tenacity, Brawn, Iron Strength</td></tr>
+      <tr><td><strong>Castle</strong></td><td>Ironclad, Stalwart, Pillars of Stability (Armor)</td></tr>
+      <tr><td><strong>Relentless</strong></td><td>All CDR nodes</td></tr>
+      <tr><td><strong>Shield Bearer</strong></td><td>Block Chance nodes, Armor nodes</td></tr>
+      <tr><td><strong>Beacon</strong></td><td>Life nodes, Aura enhancement</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- LEVELS 1-14 -->
+<section id="lv1">
+  <h1>LEVELS 1-14: EARLY GAME</h1>
+
+  <h3>Skill Order</h3>
+  <div class="box">
+    <table>
+      <tr><th>Lvl</th><th>Skill</th><th>Notes</th></tr>
+      <tr><td>1</td><td class="y"><strong>Advance</strong></td><td class="r">YOUR FAITH GENERATOR - SPAM THIS</td></tr>
+      <tr><td>2</td><td class="g"><strong>Blessed Hammer</strong></td><td>Main damage</td></tr>
+      <tr><td>3</td><td>Enhanced Blessed Hammer</td><td>More hits</td></tr>
+      <tr><td>4</td><td class="g"><strong>Disciple's Halo</strong></td><td>Hammers follow you</td></tr>
+      <tr><td>5</td><td>Defiance Aura</td><td>Healing - KEEP ACTIVE</td></tr>
+      <tr><td>6</td><td>Enhanced Defiance</td><td></td></tr>
+      <tr><td>7</td><td>Rite of Prayer</td><td>Heals when aura active</td></tr>
+      <tr><td>8-11</td><td>Blessed Hammer 2/5 → 5/5</td><td>MAX THIS FIRST</td></tr>
+      <tr><td>12</td><td>Rally</td><td>Emergency Faith burst</td></tr>
+      <tr><td>13</td><td>Enhanced Rally</td><td></td></tr>
+      <tr><td>14</td><td class="p"><strong>Words of Sacrifice</strong></td><td class="r">Infinite Rally (costs HP instead)</td></tr>
+    </table>
+  </div>
+
+  <h3>Skill Bar</h3>
+  <div class="box">
+    <pre>[Basic]  ADVANCE        ← SPAM THIS FOR FAITH
+[Core]   Blessed Hammer ← Damage
+[1]      Defiance Aura  ← Keep active
+[2]      Rally          ← When Faith empty (after lvl 12)
+[3]      (empty)
+[4]      (empty)</pre>
+  </div>
+
+  <h3>How To Play</h3>
+  <div class="box highlight">
+    <pre>1. Run up to enemies
+2. ADVANCE 2-3 times (builds Faith)
+3. Blessed Hammer 1 time
+4. ADVANCE 2-3 times (refill Faith)
+5. Blessed Hammer 1 time
+6. Repeat
+
+If Faith empty: Rally → Advance spam</pre>
+    <p style="margin-top:0.75rem"><strong class="y">THE GOLDEN RULE:</strong> 2 Advance hits for every 1 Hammer</p>
+  </div>
+
+  <h3>Common Mistakes</h3>
+  <div class="box warn">
+    <table>
+      <tr><td class="r">Only using Hammer</td><td>USE ADVANCE to generate Faith</td></tr>
+      <tr><td class="r">Fighting at range</td><td>Get in MELEE range</td></tr>
+      <tr><td class="r">Ignoring Defiance Aura</td><td>Turn it ON and leave it on</td></tr>
+    </table>
+  </div>
+
+  <h3>Gear Priority</h3>
+  <p>Just equip whatever has:</p>
+  <ol>
+    <li>Higher weapon damage (MOST IMPORTANT)</li>
+    <li>+Blessed Hammer if you see it</li>
+    <li>Life/Armor for survival</li>
+  </ol>
+  <p class="dim">Don't overthink it yet. Don't waste gold upgrading gems.</p>
+</section>
+
+<!-- LEVELS 15-34 -->
+<section id="lv15">
+  <h1>LEVELS 15-34: MID GAME</h1>
+
+  <div class="box highlight">
+    <strong class="g">FIRST:</strong> At level 15, go to your skill menu and select <strong class="p">DISCIPLE</strong> oath. This makes your cooldown skills trigger Arbiter Form = 50% more damage.
+  </div>
+
+  <h3>Skill Order</h3>
+  <div class="box">
+    <table>
+      <tr><th>Lvl</th><th>Skill</th><th>Notes</th></tr>
+      <tr><td>15</td><td class="g"><strong>Falling Star</strong></td><td>Gap closer + Arbiter trigger</td></tr>
+      <tr><td>16</td><td>Enhanced Falling Star</td><td>CD reduction</td></tr>
+      <tr><td>17</td><td>Freefall</td><td></td></tr>
+      <tr><td>18</td><td class="g"><strong>Condemn</strong></td><td>Groups enemies together</td></tr>
+      <tr><td>19</td><td>Enhanced Condemn</td><td></td></tr>
+      <tr><td>20</td><td>Gather the Guilty</td><td>Vulnerable application</td></tr>
+      <tr><td>21</td><td>Enhanced Advance</td><td></td></tr>
+      <tr><td>22</td><td class="g"><strong>Flash of the Blade</strong></td><td class="y">Advance now triggers Arbiter!</td></tr>
+      <tr><td>23</td><td>Longevity (1/3)</td><td></td></tr>
+      <tr><td>24</td><td class="r"><strong>Arbiter of Justice</strong></td><td>Ultimate ability</td></tr>
+      <tr><td>25</td><td>Enhanced Arbiter</td><td></td></tr>
+      <tr><td>26</td><td>Seraph's Wings</td><td>Wing attacks in Arbiter</td></tr>
+      <tr><td>27-28</td><td>Longevity (2/3, 3/3)</td><td></td></tr>
+      <tr><td>29</td><td>Crack in the Armor</td><td></td></tr>
+      <tr><td>30-32</td><td>High Charity (3 pts)</td><td>+Healing received - sustains Rally</td></tr>
+      <tr><td>33</td><td>Shining Armor</td><td></td></tr>
+      <tr><td>34</td><td class="y"><strong>EXALTATION</strong></td><td class="r">KEY PASSIVE - HUGE DAMAGE SPIKE</td></tr>
+    </table>
+  </div>
+
+  <h3>Key Breakpoints</h3>
+  <div class="box highlight">
+    <table>
+      <tr><td class="y"><strong>Level 15</strong></td><td>Pick DISCIPLE oath</td></tr>
+      <tr><td class="y"><strong>Level 22</strong></td><td>Advance triggers Arbiter (big deal)</td></tr>
+      <tr><td class="y"><strong>Level 34</strong></td><td>Exaltation = massive damage spike</td></tr>
+    </table>
+  </div>
+
+  <h3>Skill Bar</h3>
+  <div class="box">
+    <pre>[Basic]  ADVANCE        ← Still your Faith generator
+[Core]   Blessed Hammer ← Damage
+[1]      Falling Star   ← Jump to enemies + triggers Arbiter
+[2]      Condemn        ← Groups enemies + Vulnerable
+[3]      Defiance Aura  ← Keep active
+[4]      Rally          ← Movement + emergency Faith</pre>
+  </div>
+
+  <h3>Rotation After Level 22</h3>
+  <div class="box">
+    <pre>1. Falling Star INTO pack (triggers Arbiter)
+2. Advance (also triggers Arbiter now!)
+3. Blessed Hammer 2-3x (they orbit you)
+4. Condemn to group + Vulnerable
+5. Falling Star to next pack</pre>
+  </div>
+
+  <h3>Aspects To Look For</h3>
+  <div class="box">
+    <table>
+      <tr><td>Aspect of Might</td><td>Dark Ravine</td><td>Dry Steppes</td></tr>
+      <tr><td>Aspect of Disobedience</td><td>Halls of the Damned</td><td>Kehjistan</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- LEVELS 35-50 -->
+<section id="lv35">
+  <h1>LEVELS 35-50: LATE LEVELING</h1>
+
+  <div class="box">
+    <strong>You should have by now:</strong>
+    <ul>
+      <li>DISCIPLE oath selected</li>
+      <li>EXALTATION key passive (level 34)</li>
+      <li>Falling Star + Condemn for Arbiter triggers</li>
+      <li>Flash of the Blade (Advance triggers Arbiter)</li>
+    </ul>
+  </div>
+
+  <h3>Skill Order</h3>
+  <div class="box">
+    <table>
+      <tr><td>35-37</td><td>Giant Slayer (3 pts)</td><td>+Elite/Boss damage</td></tr>
+      <tr><td>38-40</td><td>Renewal (3 pts)</td><td>+Healing received</td></tr>
+      <tr><td>41-43</td><td>Righteousness (3 pts)</td><td>+Holy damage</td></tr>
+      <tr><td>44-46</td><td>En Garde, Riposte, Discipline</td><td>Block + damage</td></tr>
+      <tr><td>47-49</td><td>Master Craftwork (3 pts)</td><td>+Skill damage</td></tr>
+      <tr><td>50</td><td>The Best Offense</td><td></td></tr>
+    </table>
+  </div>
+
+  <h3>Skill Bar (Final)</h3>
+  <div class="box highlight">
+    <pre>[Basic]  Rally          ← Now infinite use (Words of Sacrifice)
+[Core]   Blessed Hammer ← Damage
+[1]      Falling Star   ← Arbiter trigger + mobility
+[2]      Condemn        ← Grouping + Vulnerable
+[3]      Defiance Aura  ← Sustain
+[4]      Fanaticism Aura ← Attack Speed
+[Ult]    Arbiter of Justice ← Must be on bar</pre>
+  </div>
+
+  <h3>Boots - CRITICAL</h3>
+  <div class="box warn">
+    <p>Look for: <strong class="r">"Attacks Reduce Evade Cooldown by 1.5s"</strong></p>
+    <p>This becomes absolutely critical at endgame with Argent Veil.</p>
+  </div>
+
+  <h3>Preparing For Endgame</h3>
+  <div class="box">
+    <strong>Uniques to look for:</strong>
+    <ol>
+      <li><strong class="g">Argent Veil</strong> (Ring) - Build defining</li>
+      <li><strong class="g">Herald's Morningstar</strong> (Weapon) - Best weapon</li>
+    </ol>
+    <p style="margin-top:0.5rem"><strong>Gambling Priority:</strong> 1H Weapons > Rings > Chest/Pants</p>
+  </div>
+</section>
+
+<!-- GEAR -->
+<section id="gear">
+  <h1>ENDGAME GEAR</h1>
+
+  <div class="box warn">
+    <strong class="r">CRITICAL CHECKS:</strong>
+    <table style="margin-top:0.5rem">
+      <tr><td class="r"><strong>Boots</strong></td><td>"Attacks Reduce Evade Cooldown" affix - BUILD BREAKS WITHOUT THIS</td></tr>
+      <tr><td class="r"><strong>Amulet</strong></td><td>Temper "Arbiter Duration" for 100% uptime</td></tr>
+      <tr><td class="r"><strong>CDR</strong></td><td>Stack on Amulet + Rings until Arbiter never drops</td></tr>
+    </table>
+  </div>
+
+  <h3>Helm</h3>
+  <div class="box">
+    <table>
+      <tr><td width="100"><strong>Aspect</strong></td><td>Aspect of Firm Decree</td></tr>
+      <tr><td><strong>Affixes</strong></td><td>1. CDR, 2. Max Life, 3. Armor, 4. Total Armor</td></tr>
+      <tr><td><strong>Temper</strong></td><td>CDR + Max Life</td></tr>
+      <tr><td><strong>MW Crit</strong></td><td>Cooldown Reduction</td></tr>
+      <tr><td><strong>Gem</strong></td><td>Ruby (Strength)</td></tr>
+    </table>
+    <p class="dim" style="margin-top:0.5rem">High Pit: Swap to Harlequin Crest (uber unique)</p>
+  </div>
+
+  <h3>Chest</h3>
+  <div class="box">
+    <table>
+      <tr><td width="100"><strong>Aspect</strong></td><td>Aspect of Disobedience - Armor stacks on hit (Castle scaling)</td></tr>
+      <tr><td><strong>Affixes</strong></td><td>1. Total Armor, 2. Max Life, 3. DR, 4. Armor</td></tr>
+      <tr><td><strong>Temper</strong></td><td>Armor + Max Life</td></tr>
+      <tr><td><strong>MW Crit</strong></td><td>Total Armor or Max Life</td></tr>
+      <tr><td><strong>Gem</strong></td><td>Ruby (Strength)</td></tr>
+    </table>
+    <p class="dim" style="margin-top:0.5rem">High Pit: Swap to Tyrael's Might (uber unique)</p>
+  </div>
+
+  <h3>Gloves</h3>
+  <div class="box">
+    <table>
+      <tr><td width="100"><strong>Aspect</strong></td><td>Aspect of Holy Punishment</td></tr>
+      <tr><td><strong>Affixes</strong></td><td>1. Attack Speed, 2. Crit Chance, 3. +Hammer Ranks, 4. All Stats</td></tr>
+      <tr><td><strong>Temper</strong></td><td>Attack Speed + Crit Chance</td></tr>
+      <tr><td><strong>MW Crit</strong></td><td>Attack Speed or Crit Chance</td></tr>
+    </table>
+  </div>
+
+  <h3>Pants</h3>
+  <div class="box">
+    <table>
+      <tr><td width="100"><strong>Aspect</strong></td><td>Aspect of Hale's Salve</td></tr>
+      <tr><td><strong>Affixes</strong></td><td>1. Total Armor, 2. Max Life, 3. Armor, 4. DR</td></tr>
+      <tr><td><strong>Temper</strong></td><td>Armor + Max Life</td></tr>
+      <tr><td><strong>MW Crit</strong></td><td>Total Armor or Max Life</td></tr>
+      <tr><td><strong>Gem</strong></td><td>Ruby (Strength)</td></tr>
+    </table>
+  </div>
+
+  <h3>Boots</h3>
+  <div class="box warn">
+    <table>
+      <tr><td width="100"><strong>Aspect</strong></td><td>Aspect of Unstoppable Force</td></tr>
+      <tr><td><strong>Affixes</strong></td><td class="r">1. <strong>ATTACKS REDUCE EVADE CD (MANDATORY)</strong>, 2. Move Speed, 3. Armor</td></tr>
+      <tr><td><strong>Temper</strong></td><td class="r">Evade CD Reduction + Movement Speed</td></tr>
+      <tr><td><strong>MW Crit</strong></td><td>Movement Speed</td></tr>
+    </table>
+  </div>
+
+  <h3>Amulet</h3>
+  <div class="box warn">
+    <table>
+      <tr><td width="100"><strong>Aspect</strong></td><td>Aspect of Ascension - Damage stacks in Arbiter</td></tr>
+      <tr><td><strong>Affixes</strong></td><td class="r">1. <strong>CDR (MANDATORY)</strong>, 2. Move Speed, 3. Armor, 4. +Defiance ranks</td></tr>
+      <tr><td><strong>Temper</strong></td><td class="r"><strong>Arbiter Duration</strong> + CDR</td></tr>
+      <tr><td><strong>MW Crit</strong></td><td>CDR</td></tr>
+      <tr><td><strong>Gem</strong></td><td>Diamond (All Resist)</td></tr>
+    </table>
+  </div>
+
+  <h3>Ring 2</h3>
+  <div class="box">
+    <table>
+      <tr><td width="100"><strong>Aspect</strong></td><td>Aspect of Celestial Strife - Vuln damage in Arbiter</td></tr>
+      <tr><td><strong>Affixes</strong></td><td>1. CDR, 2. Crit Chance, 3. Crit Damage, 4. Max Life</td></tr>
+      <tr><td><strong>Temper</strong></td><td>CDR + Crit Chance</td></tr>
+      <tr><td><strong>MW Crit</strong></td><td>CDR or Crit Chance</td></tr>
+      <tr><td><strong>Gem</strong></td><td>Diamond (All Resist)</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- UNIQUES -->
+<section id="uniques">
+  <h1>REQUIRED UNIQUES</h1>
+
+  <div class="box highlight">
+    <strong class="g">ALL 3 UNIQUES DROP FROM THE SAME BOSSES:</strong> Duriel, Andariel, or Harbinger of Hatred. Farm ONE boss for all three!
+  </div>
+
+  <h2>Drop Rates (The Real Numbers)</h2>
+
+  <div class="box warn">
+    <h4 class="y">Mythic/Uber Unique Drop Rate</h4>
+    <table style="margin-top:0.5rem">
+      <tr><td><strong>Base Rate</strong></td><td class="r"><strong>~2% per kill</strong></td><td>1 in 50 kills average</td></tr>
+      <tr><td><strong>Per Player</strong></td><td>2% each</td><td>Group of 4 = 4x more chances total</td></tr>
+      <tr><td><strong>Specific Item</strong></td><td class="r"><strong>~1 in 350</strong></td><td>For ONE specific uber unique</td></tr>
+      <tr><td><strong>Tormented</strong></td><td>1.5% per kill</td><td>But 5 kills per run = ~7.4% per full run</td></tr>
+    </table>
+  </div>
+
+  <div class="box">
+    <h4>Argent Veil Specific Drop Sources</h4>
+    <table style="margin-top:0.5rem">
+      <tr><th>Boss</th><th>Notes</th></tr>
+      <tr><td class="g"><strong>Duriel</strong></td><td>Primary farm target - shares pool with your other uniques</td></tr>
+      <tr><td class="g"><strong>Andariel</strong></td><td>Same loot pool as Duriel</td></tr>
+      <tr><td><strong>Grigoire</strong></td><td>Also in his loot pool (bonus while farming Shards)</td></tr>
+      <tr><td><strong>Lord Zir</strong></td><td>Also in his loot pool</td></tr>
+      <tr><td><strong>Varshan</strong></td><td>Lair Boss - also drops Argent Veil</td></tr>
+      <tr><td class="dim">World Drop</td><td class="dim">Extremely rare from any mob/chest</td></tr>
+    </table>
+  </div>
+
+  <div class="box highlight">
+    <h4 class="g">Expected Kills For Your Build</h4>
+    <table style="margin-top:0.5rem">
+      <tr><td><strong>Any of the 3 uniques</strong></td><td>~50-100 Duriel kills</td><td class="dim">You need ANY to start</td></tr>
+      <tr><td><strong>All 3 uniques</strong></td><td>~150-300 Duriel kills</td><td class="dim">RNG dependent</td></tr>
+      <tr><td><strong>Perfect rolls</strong></td><td>500+ kills</td><td class="dim">Endgame grind</td></tr>
+    </table>
+    <p style="margin-top:0.5rem" class="dim">These are averages. Some get lucky in 20 kills, some go 200+ dry.</p>
+  </div>
+
+  <h2>Complete Duriel Farming Guide (S11)</h2>
+
+  <div class="box warn">
+    <strong class="r">THE CHAIN:</strong> You need to farm TWO feeder bosses to get materials for Duriel.
+    <pre style="margin-top:0.75rem;background:#0d0d0d;padding:0.75rem;border-radius:4px;font-size:0.8rem">STEP 1: Farm Base Materials
+├── Helltides ──────────> Living Steel (for Grigoire)
+└── Whisper Caches ─────> Malignant Hearts (for Varshan)
+
+STEP 2: Kill Feeder Bosses
+├── Grigoire (12 Living Steel) ──────> Shard of Agony
+└── Varshan (12 Malignant Hearts) ──> Shard of Agony
+
+STEP 3: Kill Duriel
+└── Duriel (3x Shard of Agony) ──────> YOUR UNIQUES</pre>
+  </div>
+
+  <h3>Step 1: Farm Base Materials</h3>
+  <div class="box">
+    <table>
+      <tr><th>Material</th><th>Source</th><th>How To Get</th></tr>
+      <tr>
+        <td class="g"><strong>Living Steel</strong></td>
+        <td>Helltides</td>
+        <td>Open "Tortured Gift of Living Steel" chests (275 cinders)</td>
+      </tr>
+      <tr>
+        <td class="p"><strong>Malignant Hearts</strong></td>
+        <td>Whisper Caches</td>
+        <td>Turn in Grim Favors at Tree of Whispers</td>
+      </tr>
+    </table>
+    <p style="margin-top:0.75rem"><strong class="g">Living Steel is EASIER</strong> - one full Helltide = enough for 2-3 Grigoire runs.</p>
+    <p><strong class="r">Malignant Hearts are ANNOYING</strong> - caches drop hearts OR body parts (head/hand/bone). Trade parts at Alchemist for hearts.</p>
+  </div>
+
+  <div class="box highlight">
+    <h4 class="g">Living Steel Farming Efficiency</h4>
+    <table style="margin-top:0.5rem">
+      <tr><td><strong>Best Chest</strong></td><td class="y"><strong>Tortured Gift of Mysteries</strong></td><td>250 cinders, 14 Living Steel</td></tr>
+      <tr><td><strong>Best Region</strong></td><td class="g"><strong>Kehjistan</strong></td><td>3 Mystery chests (other regions have 2)</td></tr>
+      <tr><td><strong>Per Helltide</strong></td><td class="g"><strong>~42 Living Steel</strong></td><td>If you hit all 3 Mystery chests</td></tr>
+      <tr><td><strong>Time</strong></td><td>Under 1 hour</td><td>Farm 600 cinders, open 3 chests</td></tr>
+    </table>
+  </div>
+
+  <div class="box">
+    <h4>Helltide Chest Reset Trick</h4>
+    <p>Living Steel chests <strong>respawn at the top of each hour</strong> in different locations.</p>
+    <table style="margin-top:0.5rem">
+      <tr><td><strong>:00 - :30</strong></td><td>Farm cinders, open first wave of chests</td></tr>
+      <tr><td><strong>:00 (next hour)</strong></td><td>Chests respawn in new locations</td></tr>
+      <tr><td><strong>Result</strong></td><td class="g">Double the chests per Helltide session</td></tr>
+    </table>
+  </div>
+
+  <h3>Step 2: Kill Feeder Bosses</h3>
+  <div class="box">
+    <table>
+      <tr><th>Boss</th><th>Location</th><th>Materials Needed</th><th>Drops</th></tr>
+      <tr>
+        <td class="g"><strong>Grigoire</strong></td>
+        <td>Hall of the Penitent<br><span class="dim">(south of Ked Bardu)</span></td>
+        <td>12 Living Steel</td>
+        <td class="y"><strong>Shard of Agony</strong></td>
+      </tr>
+      <tr>
+        <td class="p"><strong>Varshan</strong></td>
+        <td>Malignant Burrow<br><span class="dim">(near Tree of Whispers, Hawezar)</span></td>
+        <td>12 Malignant Hearts</td>
+        <td class="y"><strong>Shard of Agony</strong></td>
+      </tr>
+    </table>
+    <p style="margin-top:0.75rem" class="g"><strong>TIP:</strong> Grigoire is faster because Living Steel is easy from Helltides. He also drops Living Steel back!</p>
+  </div>
+
+  <h3>Step 3: Kill Duriel</h3>
+  <div class="box highlight">
+    <table>
+      <tr><td><strong>Boss</strong></td><td class="y"><strong>DURIEL</strong></td></tr>
+      <tr><td><strong>Location</strong></td><td>Gaping Crevasse, Gea Kul (Kehjistan)</td></tr>
+      <tr><td><strong>Materials</strong></td><td class="y"><strong>3x Shard of Agony</strong></td></tr>
+      <tr><td><strong>Difficulty</strong></td><td>Torment 4 = 7 guaranteed uniques per kill</td></tr>
+      <tr><td><strong>Drop Rate</strong></td><td class="g"><strong>2x Mythic drop rate</strong> vs other bosses</td></tr>
+    </table>
+    <p style="margin-top:0.75rem"><strong class="g">All 3 of your needed uniques</strong> (Argent Veil, Herald's Morningstar, Herald of Zakarum) are in Duriel's loot pool!</p>
+  </div>
+
+  <h3>Optimal Farm Loop</h3>
+  <div class="box warn">
+    <table>
+      <tr><td class="y"><strong>1</strong></td><td>Run Helltide until you have <strong>24+ Living Steel</strong></td></tr>
+      <tr><td class="y"><strong>2</strong></td><td>Kill <strong>Grigoire x2</strong> (= 2-4 Shards of Agony)</td></tr>
+      <tr><td class="y"><strong>3</strong></td><td>While doing Helltide, do Whisper bounties for Malignant Hearts</td></tr>
+      <tr><td class="y"><strong>4</strong></td><td>Kill <strong>Varshan</strong> when you have 12 hearts (= 1-2 more Shards)</td></tr>
+      <tr><td class="y"><strong>5</strong></td><td>Once you have <strong>3 Shards</strong> → Kill <strong>DURIEL</strong></td></tr>
+      <tr><td class="y"><strong>6</strong></td><td>Repeat until uniques drop</td></tr>
+    </table>
+  </div>
+
+  <h3>Group vs Solo Farming</h3>
+  <div class="box highlight">
+    <h4 class="g">Group of 4 is OPTIMAL</h4>
+    <table style="margin-top:0.5rem">
+      <tr><td><strong>Drop Rate</strong></td><td>2% per player</td><td>4 players = 4 chances per kill</td></tr>
+      <tr><td><strong>Kill Speed</strong></td><td>Much faster</td><td>More kills per hour</td></tr>
+      <tr><td><strong>Material Rotation</strong></td><td class="g">Each player summons in turn</td><td>4x the runs per material set</td></tr>
+    </table>
+  </div>
+
+  <div class="box">
+    <h4>Solo Farming</h4>
+    <table style="margin-top:0.5rem">
+      <tr><td><strong>Drop Rate</strong></td><td>Still 2%</td><td>Same chance, fewer chances per session</td></tr>
+      <tr><td><strong>Kill Speed</strong></td><td>Slower</td><td>Manageable at Pit 25+ gear</td></tr>
+      <tr><td><strong>Pro</strong></td><td class="g">All loot is yours</td><td>No competition for drops</td></tr>
+      <tr><td><strong>Con</strong></td><td class="r">Material inefficient</td><td>Burns your own mats only</td></tr>
+    </table>
+  </div>
+
+  <div class="box warn">
+    <h4 class="r">Regular vs Tormented Bosses</h4>
+    <table style="margin-top:0.5rem">
+      <tr><th></th><th>Regular</th><th>Tormented</th></tr>
+      <tr><td><strong>Duriel Materials</strong></td><td>3 Shards</td><td>15+ Shards</td></tr>
+      <tr><td><strong>Difficulty</strong></td><td>Easier</td><td>Much harder</td></tr>
+      <tr><td><strong>At Pit 25</strong></td><td class="g"><strong>Do Regular</strong></td><td class="r">Skip Tormented</td></tr>
+    </table>
+    <p style="margin-top:0.5rem">Farm regular bosses until your gear improves. Tormented is for when you're overgeared.</p>
+  </div>
+
+  <h3>Duriel Fight Tips</h3>
+  <div class="box">
+    <table>
+      <tr><td class="r"><strong>Stack Poison Resist</strong></td><td>Duriel does heavy poison damage</td></tr>
+      <tr><td class="g"><strong>Group of 4</strong></td><td>More unique drops per kill</td></tr>
+      <tr><td class="g"><strong>Torment 4</strong></td><td>Minimum 7 uniques per kill</td></tr>
+      <tr><td><strong>Max Armor</strong></td><td>Some attacks hit very hard</td></tr>
+    </table>
+  </div>
+
+  <h3>Alternative Bosses (Same Loot Pool)</h3>
+  <div class="box">
+    <table>
+      <tr><th>Boss</th><th>Materials</th><th>Notes</th></tr>
+      <tr><td><strong>Andariel</strong></td><td>3x Pincushioned Doll</td><td>From Beast in Ice + Lord Zir</td></tr>
+      <tr><td><strong>Harbinger of Hatred</strong></td><td>VoH materials</td><td>Requires Vessel of Hatred DLC</td></tr>
+      <tr><td><strong>Belial</strong></td><td>2x Betrayer's Husk</td><td>Can choose Duriel's loot pool as reward</td></tr>
+    </table>
+  </div>
+
+  <h3>S11 Bonus: Mythic Prankster</h3>
+  <div class="box highlight">
+    <p>Look for <strong class="g">Mythic Prankster</strong> Nightmare Dungeon sigils - guarantees <strong>5 Mythic Uniques</strong>. Rare but insane value when you find one.</p>
+  </div>
+
+  <h2>The Three Uniques</h2>
+
+  <h3>Ring: Argent Veil</h3>
+  <div class="box highlight">
+    <p><strong class="g">BUILD ENABLER</strong> - Evade casts Blessed Hammer</p>
+    <table style="margin-top:0.5rem">
+      <tr><td><strong>Look for</strong></td><td>Higher Hammer count roll, any Greater Affixes</td></tr>
+      <tr><td><strong>Temper</strong></td><td>CDR + Crit Chance</td></tr>
+      <tr><td><strong>MW Crit</strong></td><td>CDR</td></tr>
+      <tr><td><strong>Drop Source</strong></td><td class="g">Duriel / Andariel / Harbinger loot pool</td></tr>
+    </table>
+  </div>
+
+  <h3>Weapon: Herald's Morningstar</h3>
+  <div class="box highlight">
+    <p><strong class="g">BEST WEAPON</strong> - +Blessed Hammer ranks & damage</p>
+    <table style="margin-top:0.5rem">
+      <tr><td><strong>Look for</strong></td><td>Higher damage roll, higher +Hammer ranks, any GAs</td></tr>
+      <tr><td><strong>Temper</strong></td><td class="g"><strong>Blessed Hammer Double Damage</strong> + Disciple Damage</td></tr>
+      <tr><td><strong>MW Crit</strong></td><td class="g"><strong>Blessed Hammer Double Damage</strong> (HUGE)</td></tr>
+      <tr><td><strong>Drop Source</strong></td><td class="g">Duriel / Andariel / Harbinger loot pool</td></tr>
+    </table>
+    <p class="y" style="margin-top:0.5rem"><strong>MASTERWORK THIS FIRST</strong> - biggest damage gain</p>
+  </div>
+
+  <h3>Shield: Herald of Zakarum</h3>
+  <div class="box highlight">
+    <p><strong class="g">ARMOR DOUBLER</strong> - +50% Strength, Armor, Resistances</p>
+    <table style="margin-top:0.5rem">
+      <tr><td><strong>Look for</strong></td><td>Higher Block Chance, higher Armor roll, any GAs</td></tr>
+      <tr><td><strong>Temper</strong></td><td>En Garde (Block) + Block Damage</td></tr>
+      <tr><td><strong>MW Crit</strong></td><td>Block Chance or Armor</td></tr>
+      <tr><td><strong>Drop Source</strong></td><td class="g">Duriel / Andariel / Harbinger loot pool</td></tr>
+    </table>
+  </div>
+
+  <h3>Upgrade Priority</h3>
+  <div class="box">
+    <table>
+      <tr><td>1</td><td class="g"><strong>Argent Veil</strong></td><td>Enables the entire build</td></tr>
+      <tr><td>2</td><td class="g"><strong>Herald's Morningstar</strong></td><td>Massive hammer boost</td></tr>
+      <tr><td>3</td><td class="g"><strong>Herald of Zakarum</strong></td><td>Armor doubling for Castle</td></tr>
+      <tr><td>4</td><td>Heir of Perdition</td><td>~Doubles damage</td></tr>
+      <tr><td>5</td><td>Shroud of False Death</td><td>+1 all passives</td></tr>
+      <tr><td>6</td><td>Harlequin Crest</td><td>20% DR, mythic unique</td></tr>
+      <tr><td>7</td><td>Tyrael's Might</td><td>Best DR, mythic unique</td></tr>
+    </table>
+  </div>
+
+  <h3>Until You Get Uniques</h3>
+  <div class="box info">
+    <p>Build still works, just slower. Use legendaries with these aspects:</p>
+    <table style="margin-top:0.5rem">
+      <tr><td>Ring</td><td>Any damage aspect (put Blessed Hammer back on bar)</td></tr>
+      <tr><td>Weapon</td><td>Aspect of Berserk Ripping or any +dmg</td></tr>
+      <tr><td>Shield</td><td>Aspect of Disobedience</td></tr>
+    </table>
+  </div>
+
+  <h3>Backup Farming Methods</h3>
+  <div class="box">
+    <table>
+      <tr><td><strong>Helltides</strong></td><td>Tortured Gift of Mystery (250 cinders) - good general farming</td></tr>
+      <tr><td><strong>Gambling</strong></td><td>Backup option if low on boss mats</td></tr>
+      <tr><td><strong>World Bosses</strong></td><td>Every 6 hours - small chance but free</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- TEMPERING -->
+<section id="tempering">
+  <h1>TEMPERING & MASTERWORKING</h1>
+
+  <div class="box highlight">
+    <h4 class="g">SEASON 11 CHANGE: Tempering is now DETERMINISTIC</h4>
+    <p>No more RNG! You now <strong>choose the exact affix</strong> you want. The only random element is the roll value within that affix's range.</p>
+  </div>
+
+  <h2>How Tempering Works (S11)</h2>
+
+  <div class="box">
+    <table>
+      <tr><td><strong>Old System</strong></td><td class="r">Random affix from recipe pool (9-29% chance for what you want)</td></tr>
+      <tr><td><strong>New System</strong></td><td class="g"><strong>Pick the exact affix you want</strong></td></tr>
+      <tr><td><strong>Temper Charges</strong></td><td>Each item has limited charges</td></tr>
+      <tr><td><strong>Scroll of Restoration</strong></td><td class="g">Restores 1 charge, <strong>unlimited uses per item</strong></td></tr>
+    </table>
+  </div>
+
+  <h2>Masterworking (S11)</h2>
+
+  <div class="box">
+    <h4>Quality System</h4>
+    <table style="margin-top:0.5rem">
+      <tr><td><strong>Success Rate</strong></td><td class="g"><strong>100%</strong></td><td>Never fails</td></tr>
+      <tr><td><strong>Quality per upgrade</strong></td><td>+2 to +5</td><td>Random within range</td></tr>
+      <tr><td><strong>Max Quality</strong></td><td class="y"><strong>25</strong></td><td>Then unlock capstone</td></tr>
+      <tr><td><strong>Capstone</strong></td><td class="g"><strong>+50% to random affix</strong></td><td>Endgame goal</td></tr>
+    </table>
+  </div>
+
+  <div class="box warn">
+    <h4 class="r">Masterworking Materials</h4>
+    <table style="margin-top:0.5rem">
+      <tr><th>Material</th><th>Source</th></tr>
+      <tr><td class="g"><strong>Obducite</strong></td><td>Nightmare Dungeons, Kurast Undercity, Infernal Hordes</td></tr>
+      <tr><td class="y"><strong>Neathiron</strong></td><td>World Bosses, Bartuc (Infernal Hordes), Astaroth, Belial</td></tr>
+      <tr><td>Gold</td><td>Everything</td></tr>
+    </table>
+    <p style="margin-top:0.5rem" class="dim">Higher quality items cost more materials to upgrade. Capstone rerolls are expensive.</p>
+  </div>
+
+  <h2>Tempers By Slot</h2>
+
+  <h3>By Slot</h3>
+  <div class="box">
+    <table>
+      <tr><th>Slot</th><th>Temper 1</th><th>Temper 2</th><th>Manual</th></tr>
+      <tr><td>Helm</td><td>Maximum Life</td><td>Armor</td><td>Worldly Endurance</td></tr>
+      <tr><td>Chest</td><td>Maximum Life</td><td>Armor</td><td>Worldly Endurance</td></tr>
+      <tr><td>Gloves</td><td>Disciple Damage</td><td>Attack Speed</td><td>Class Finesse</td></tr>
+      <tr><td>Pants</td><td>Maximum Life</td><td>Armor</td><td>Worldly Endurance</td></tr>
+      <tr><td>Boots</td><td class="r"><strong>Evade CD Reduction</strong></td><td>Movement Speed</td><td>Natural Motion</td></tr>
+      <tr><td>Amulet</td><td class="r"><strong>Arbiter Duration</strong></td><td>CDR</td><td>Class Finesse</td></tr>
+      <tr><td>Ring 1</td><td>Disciple Damage</td><td>Crit Damage</td><td>Class Finesse</td></tr>
+      <tr><td>Ring 2</td><td>Disciple Damage</td><td>Crit Damage</td><td>Class Finesse</td></tr>
+      <tr><td>Weapon</td><td class="g"><strong>Hammer Double Damage</strong></td><td>Disciple Damage</td><td>Weapon Augment</td></tr>
+      <tr><td>Shield</td><td>En Garde (Block)</td><td>Arbiter Duration</td><td>Class Guard</td></tr>
+    </table>
+  </div>
+
+  <h3>Priority Tempers</h3>
+  <div class="box highlight">
+    <ol>
+      <li><strong class="g">Blessed Hammer Double Damage</strong> (Weapon) - until ~100% chance</li>
+      <li><strong class="r">En Garde</strong> (Shield) - until 100% Block Chance</li>
+      <li><strong class="r">Arbiter Duration</strong> (Amulet) - 100% uptime</li>
+      <li>Disciple Damage - all jewelry</li>
+      <li>Attack Speed / CDR - QoL</li>
+    </ol>
+  </div>
+
+  <h3>Masterworking Priority</h3>
+  <div class="box">
+    <table>
+      <tr><td>1</td><td class="g"><strong>Weapon</strong></td><td>Strength or Crit Damage</td></tr>
+      <tr><td>2</td><td>Gloves</td><td>Critical Strike Chance</td></tr>
+      <tr><td>3</td><td>Rings</td><td>Critical Strike Damage</td></tr>
+      <tr><td>4</td><td>Amulet</td><td>Critical Strike Chance</td></tr>
+      <tr><td>5</td><td>Shield</td><td>Armor</td></tr>
+      <tr><td>6</td><td>Armor pieces</td><td>Armor (Castle scaling)</td></tr>
+      <tr><td>7</td><td>Boots</td><td>Movement Speed</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- STAT CAPS -->
+<section id="stats">
+  <h1>STAT TARGETS & BREAKPOINTS</h1>
+
+  <div class="box warn">
+    <strong class="r">SEASON 11 CHANGES:</strong> Armor and Resistances no longer have hard caps. They now use a <strong>diminishing returns</strong> system - stacking more always helps but with decreasing efficiency.
+  </div>
+
+  <h2>Torment 4 Targets (Endgame)</h2>
+
+  <div class="box highlight">
+    <table>
+      <tr><th>Stat</th><th>Target</th><th>Why This Number</th></tr>
+      <tr><td class="g"><strong>Armor</strong></td><td class="y"><strong>13,300 - 13,500</strong></td><td>Near-max DR vs T4 enemies. ALSO boosts damage via Castle.</td></tr>
+      <tr><td class="g"><strong>All Resist</strong></td><td class="y"><strong>~85%</strong></td><td>Sweet spot - more gives diminishing returns</td></tr>
+      <tr><td class="g"><strong>Crit Chance</strong></td><td class="y"><strong>100%</strong></td><td>Every hit crits = consistent damage</td></tr>
+      <tr><td class="g"><strong>Block Chance</strong></td><td class="y"><strong>100%</strong></td><td>Via En Garde tempers + Herald of Zakarum</td></tr>
+      <tr><td class="g"><strong>CDR</strong></td><td class="y"><strong>55-60%+</strong></td><td>100% Arbiter uptime (4.5s base duration)</td></tr>
+      <tr><td class="g"><strong>Attack Speed</strong></td><td class="y"><strong>70%+</strong></td><td>More Rally procs = more Evade resets</td></tr>
+      <tr><td>+Blessed Hammer</td><td><strong>25+ ranks</strong></td><td>Weapon + gear combined</td></tr>
+      <tr><td>Maximum Life</td><td><strong>15,000+</strong></td><td>Rally costs HP - need buffer</td></tr>
+      <tr><td>Movement Speed</td><td><strong>160%+</strong></td><td>Speed farming efficiency</td></tr>
+    </table>
+  </div>
+
+  <h2>Attack Speed Cap System</h2>
+
+  <div class="box">
+    <table>
+      <tr><td><strong>Total Cap</strong></td><td class="y"><strong>200%</strong></td><td>Split into two pools of 100% each</td></tr>
+      <tr><td><strong>Varyana Merc</strong></td><td class="g">+1 Attack Speed Cap</td><td>Allows exceeding the normal cap</td></tr>
+    </table>
+    <p style="margin-top:0.5rem" class="dim">Attack speed has hidden breakpoints - between breakpoints, extra AS provides no benefit. Exact breakpoints vary by skill.</p>
+  </div>
+
+  <h2>Armor = Damage (Castle Math)</h2>
+
+  <div class="box highlight">
+    <h4 class="g">How Castle Paragon Works</h4>
+    <table style="margin-top:0.5rem">
+      <tr><td><strong>Node Effect</strong></td><td class="y"><strong>1.8% of your Armor becomes damage</strong></td></tr>
+      <tr><td><strong>10,000 Armor</strong></td><td>= 180% increased damage</td></tr>
+      <tr><td><strong>13,500 Armor</strong></td><td>= 243% increased damage</td></tr>
+      <tr><td><strong>20,000 Armor</strong></td><td>= 360% increased damage</td></tr>
+    </table>
+    <p style="margin-top:0.75rem"><strong class="r">This is why armor is both offensive AND defensive for this build.</strong></p>
+  </div>
+
+  <div class="box info">
+    <h4>Herald of Zakarum Shield Math</h4>
+    <p><strong class="r">The tooltip lies.</strong> It says "+50% [x] Armor" but it's actually <strong>additive</strong>, not multiplicative.</p>
+    <table style="margin-top:0.5rem">
+      <tr><td>What tooltip says</td><td>x1.5 multiplier</td></tr>
+      <tr><td>What it actually does</td><td>+50% added to armor pool</td></tr>
+      <tr><td>Real benefit</td><td class="g">+50% Strength, +Core Skill ranks</td></tr>
+    </table>
+    <p style="margin-top:0.5rem" class="dim">Still BiS because of the Strength and skill ranks, but don't expect armor to literally double.</p>
+  </div>
+
+  <h2>Resistance System (S11)</h2>
+
+  <div class="box">
+    <h4>Diminishing Returns Formula</h4>
+    <table style="margin-top:0.5rem">
+      <tr><td><strong>Max Possible DR</strong></td><td>90%</td><td>Theoretical limit (never reachable)</td></tr>
+      <tr><td><strong>Practical Cap</strong></td><td class="g"><strong>~85%</strong></td><td>Good value-to-investment ratio</td></tr>
+      <tr><td><strong>Formula Constant</strong></td><td>1000 at level 60</td><td>Need 1/5th resist value vs armor for same DR%</td></tr>
+    </table>
+  </div>
+
+  <div class="box highlight">
+    <h4 class="g">New: Physical Resistance</h4>
+    <p>Season 11 added a separate <strong>Physical Resistance</strong> stat. Armor now reduces ALL damage (physical + elemental), but Physical Resist is additional.</p>
+  </div>
+
+  <h2>CDR & Arbiter Uptime</h2>
+
+  <div class="box warn">
+    <h4 class="r">Arbiter Form Duration</h4>
+    <table style="margin-top:0.5rem">
+      <tr><td><strong>Base Duration</strong></td><td class="y"><strong>4.5 seconds</strong></td></tr>
+      <tr><td><strong>Triggers From</strong></td><td>Falling Star, Condemn, Advance (with Flash of the Blade)</td></tr>
+      <tr><td><strong>Damage Bonus</strong></td><td class="g"><strong>50% increased damage</strong> in Arbiter form</td></tr>
+    </table>
+  </div>
+
+  <div class="box">
+    <h4>CDR Breakpoints for Arbiter</h4>
+    <table style="margin-top:0.5rem">
+      <tr><td class="r"><strong>&lt;40% CDR</strong></td><td>Arbiter drops frequently - bad</td></tr>
+      <tr><td class="y"><strong>40-50% CDR</strong></td><td>Manageable with good skill usage</td></tr>
+      <tr><td class="g"><strong>55%+ CDR</strong></td><td>Near-permanent uptime</td></tr>
+      <tr><td class="g"><strong>58-60% CDR</strong></td><td>Walking simulator - never drops</td></tr>
+    </table>
+    <p style="margin-top:0.5rem"><strong>Key:</strong> Temper <strong class="r">Arbiter Duration</strong> on amulet for extra forgiveness.</p>
+  </div>
+
+  <h2>Evade Cooldown Mechanics</h2>
+
+  <div class="box highlight">
+    <h4 class="g">Why Evade Matters (Argent Veil)</h4>
+    <table style="margin-top:0.5rem">
+      <tr><td><strong>Base Evade CD</strong></td><td class="y"><strong>5 seconds</strong></td></tr>
+      <tr><td><strong>CDR affects Evade?</strong></td><td class="r"><strong>NO</strong> - regular CDR doesn't work on Evade</td></tr>
+      <tr><td><strong>What DOES work</strong></td><td class="g"><strong>"Attacks Reduce Evade CD by 1.5s"</strong> boot affix</td></tr>
+    </table>
+  </div>
+
+  <div class="box warn">
+    <h4 class="r">Boot Affix is MANDATORY</h4>
+    <p>Without "Attacks Reduce Evade Cooldown" on boots, you cannot spam Evade fast enough for the build to work.</p>
+    <table style="margin-top:0.5rem">
+      <tr><td><strong>Affix Value</strong></td><td>1.5 seconds per attack</td></tr>
+      <tr><td><strong>With Rally spam</strong></td><td>Evade available every ~1-2 seconds</td></tr>
+      <tr><td><strong>Argent Veil effect</strong></td><td>Spawns Blessed Hammer every 2 meters traveled while evading</td></tr>
+    </table>
+  </div>
+
+  <h2>Stat Priority Summary</h2>
+
+  <h3>Offensive Priority</h3>
+  <div class="box">
+    <table>
+      <tr><td>1</td><td class="y"><strong>CDR</strong></td><td>100% Arbiter uptime is #1</td></tr>
+      <tr><td>2</td><td class="y"><strong>Armor</strong></td><td>Castle converts to damage</td></tr>
+      <tr><td>3</td><td class="g"><strong>Crit Chance</strong></td><td>Target 100%</td></tr>
+      <tr><td>4</td><td>Crit Damage</td><td>After crit chance is capped</td></tr>
+      <tr><td>5</td><td>Attack Speed</td><td>More Rally = more Evades</td></tr>
+      <tr><td>6</td><td>Vulnerable Damage</td><td>Condemn applies Vuln</td></tr>
+    </table>
+  </div>
+
+  <h3>Defensive Priority</h3>
+  <div class="box">
+    <table>
+      <tr><td>1</td><td class="y"><strong>Armor (13.3k+)</strong></td><td>Also offensive via Castle</td></tr>
+      <tr><td>2</td><td class="y"><strong>Max Life (15k+)</strong></td><td>Rally costs HP</td></tr>
+      <tr><td>3</td><td class="g"><strong>All Resist (~85%)</strong></td><td>Diminishing returns sweet spot</td></tr>
+      <tr><td>4</td><td class="g"><strong>Block Chance (100%)</strong></td><td>Herald + Shield Bearer synergy</td></tr>
+      <tr><td>5</td><td>Damage Reduction</td><td>Generic DR stacking</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- PIT PROGRESSION -->
+<section id="pit">
+  <h1>PIT PROGRESSION</h1>
+
+  <div class="box highlight">
+    <h4 class="g">What is The Pit?</h4>
+    <p>Timed dungeon that unlocks at <strong>level 60</strong>. Kill enemies to fill a bar, then fight a boss. Completing it gives glyph XP and unlocks higher Torment difficulties.</p>
+  </div>
+
+  <h2>Tier Unlocks</h2>
+
+  <div class="box">
+    <table>
+      <tr><th>Pit Tier</th><th>Unlocks</th></tr>
+      <tr><td class="y"><strong>Tier 10</strong></td><td>Torment 1</td></tr>
+      <tr><td class="y"><strong>Tier 30</strong></td><td>Torment 2</td></tr>
+      <tr><td class="y"><strong>Tier 50</strong></td><td>Torment 3</td></tr>
+      <tr><td class="y"><strong>Tier 70</strong></td><td>Torment 4</td></tr>
+      <tr><td class="g"><strong>Tier 150</strong></td><td>Maximum tier</td></tr>
+    </table>
+  </div>
+
+  <div class="box">
+    <h4>Fast Clear Bonus</h4>
+    <p>Clear under time limit → <strong>skip up to 5 tiers</strong> (changed from 3 in earlier seasons).</p>
+  </div>
+
+  <h2>Glyph Level Breakpoints</h2>
+
+  <div class="box highlight">
+    <table>
+      <tr><th>Glyph Level</th><th>Radius</th><th>Notes</th></tr>
+      <tr><td class="y"><strong>Level 15</strong></td><td>3 → 4</td><td class="g"><strong>HUGE power spike - unlocks radius bonus</strong></td></tr>
+      <tr><td><strong>Level 21</strong></td><td>-</td><td>Diminishing returns start here</td></tr>
+      <tr><td><strong>Level 46</strong></td><td>4 → 5</td><td>Minor boost</td></tr>
+      <tr><td><strong>Level 100</strong></td><td>-</td><td>Maximum level</td></tr>
+    </table>
+  </div>
+
+  <div class="box warn">
+    <h4 class="r">Glyph Leveling Priority</h4>
+    <ol>
+      <li><strong>All glyphs to 15 FIRST</strong> - radius bonus is massive</li>
+      <li>Then push to 21 for main damage glyphs</li>
+      <li>Then 100 for min-maxing (long grind)</li>
+    </ol>
+  </div>
+
+  <h2>Best Pit Tiers for Glyph XP</h2>
+
+  <div class="box">
+    <table>
+      <tr><td class="g"><strong>Pit 60-80</strong></td><td>Best XP/time ratio for glyph leveling</td></tr>
+      <tr><td><strong>Pit 80-100</strong></td><td>Slightly more XP, slower clears</td></tr>
+      <tr><td><strong>Pit 100+</strong></td><td>For pushing, not glyph farming</td></tr>
+    </table>
+    <p style="margin-top:0.5rem" class="dim">Fast clears &gt; slow high-tier clears for glyph XP.</p>
+  </div>
+
+  <h2>Gear Check by Tier</h2>
+
+  <div class="box">
+    <table>
+      <tr><th>Pit Tier</th><th>Gear Expectations</th></tr>
+      <tr><td><strong>1-25</strong></td><td>Leveling gear, any legendaries</td></tr>
+      <tr><td><strong>25-50</strong></td><td>Decent legendaries, 1-2 uniques, basic tempers</td></tr>
+      <tr><td><strong>50-70</strong></td><td>Core uniques equipped, tempered gear, glyphs at 15</td></tr>
+      <tr><td><strong>70-100</strong></td><td>All 3 uniques, masterworked weapon, 55%+ CDR</td></tr>
+      <tr><td><strong>100-130</strong></td><td>Fully optimized, all glyphs 21+, GAs on gear</td></tr>
+      <tr><td><strong>130+</strong></td><td>Perfect rolls, mythic uniques, glyphs near 100</td></tr>
+    </table>
+  </div>
+
+  <h2>Pit Boss Tips</h2>
+
+  <div class="box warn">
+    <h4 class="r">Shadow Mimics</h4>
+    <p>Pit bosses summon shadows that mimic other boss movesets. These apply a <strong>stacking debuff</strong> that increases damage taken.</p>
+    <table style="margin-top:0.5rem">
+      <tr><td><strong>Priority</strong></td><td>Learn shadow patterns, dodge their attacks</td></tr>
+      <tr><td><strong>High Stacks</strong></td><td class="r">Can one-shot you</td></tr>
+      <tr><td><strong>Strategy</strong></td><td>Kill shadows first, then focus boss</td></tr>
+    </table>
+  </div>
+
+  <div class="box">
+    <h4>Time Management</h4>
+    <table style="margin-top:0.5rem">
+      <tr><td><strong>Timer</strong></td><td>10 minutes total</td></tr>
+      <tr><td><strong>Death Penalty</strong></td><td class="r">Significant time loss - avoid dying</td></tr>
+      <tr><td><strong>Fast Clear</strong></td><td>Skip tiers (aim for sub-3 min for max skip)</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- MERCENARY -->
+<section id="mercenary">
+  <h1>MERCENARY SETUP</h1>
+
+  <div class="box highlight">
+    <h4 class="g">Recommended Setup</h4>
+    <table style="margin-top:0.5rem">
+      <tr><td><strong>Primary</strong></td><td class="y"><strong>Varyana</strong></td><td>Attack speed, massacre stacks, DPS</td></tr>
+      <tr><td><strong>Reinforcement</strong></td><td class="p"><strong>Raheir</strong></td><td>Defense, taunt, emergency DR</td></tr>
+    </table>
+  </div>
+
+  <h2>Varyana (Berserker)</h2>
+
+  <div class="box">
+    <h4 class="g">Why Varyana is Primary</h4>
+    <table style="margin-top:0.5rem">
+      <tr><td><strong>Attack Speed Buff</strong></td><td>More Rally = more Evade resets</td></tr>
+      <tr><td><strong>Massacre Stacking</strong></td><td class="g">+20% Movement Speed at 100 stacks</td></tr>
+      <tr><td><strong>DPS</strong></td><td>Cleave and Whirlwind damage</td></tr>
+      <tr><td><strong>+1 Attack Speed Cap</strong></td><td class="g">Allows exceeding normal 200% cap</td></tr>
+      <tr><td><strong>Healing</strong></td><td>Massive healing synergy</td></tr>
+    </table>
+  </div>
+
+  <div class="box">
+    <h4>Varyana Skills</h4>
+    <table style="margin-top:0.5rem">
+      <tr><td><strong>Core Skill</strong></td><td>Cleave or Whirlwind</td></tr>
+      <tr><td><strong>Iconic Skill</strong></td><td class="g"><strong>Massacre</strong></td></tr>
+      <tr><td><strong>Reinforcement</strong></td><td>Bloodthirst</td></tr>
+    </table>
+  </div>
+
+  <h2>Raheir (Shieldbearer)</h2>
+
+  <div class="box">
+    <h4 class="p">Why Raheir is Backup</h4>
+    <table style="margin-top:0.5rem">
+      <tr><td><strong>Damage Reduction</strong></td><td>Best defensive merc in game</td></tr>
+      <tr><td><strong>Taunt</strong></td><td>Pulls aggro, gives you breathing room</td></tr>
+      <tr><td><strong>Armor Buff</strong></td><td class="g">Synergizes with Castle paragon</td></tr>
+      <tr><td><strong>All-Rounder</strong></td><td>Works with any build</td></tr>
+    </table>
+  </div>
+
+  <div class="box">
+    <h4>Raheir Skills</h4>
+    <table style="margin-top:0.5rem">
+      <tr><td><strong>Core Skill Passive</strong></td><td class="g"><strong>Raheir's Aegis</strong></td></tr>
+      <tr><td><strong>Iconic Skill</strong></td><td>Bastion</td></tr>
+      <tr><td><strong>Iconic Passive</strong></td><td>Inspiration</td></tr>
+    </table>
+  </div>
+
+  <h2>Alternative Setups</h2>
+
+  <div class="box">
+    <table>
+      <tr><th>Situation</th><th>Primary</th><th>Backup</th></tr>
+      <tr><td><strong>Speed Farming</strong></td><td class="g">Varyana</td><td>Raheir</td></tr>
+      <tr><td><strong>Pit Pushing</strong></td><td class="p">Raheir</td><td>Varyana</td></tr>
+      <tr><td><strong>Boss Farming</strong></td><td>Varyana</td><td>Aldkin (slow + DR)</td></tr>
+    </table>
+  </div>
+
+  <div class="box info">
+    <h4>Aldkin Option</h4>
+    <p>Use <strong>Aldkin</strong> as backup for boss farming. His <strong>Field of Languish</strong> slows enemies and reduces incoming damage. Good for Duriel.</p>
+  </div>
+</section>
+
+<!-- GEMS & RUNES -->
+<section id="gems">
+  <h1>GEMS & RUNEWORDS</h1>
+
+  <h2>Gems</h2>
+  <div class="box">
+    <table>
+      <tr><th>Slot</th><th>Gem</th><th>Effect</th></tr>
+      <tr><td>Weapon</td><td class="g"><strong>Emerald</strong></td><td>+Crit Damage to Vulnerable</td></tr>
+      <tr><td>Helm</td><td>Ruby</td><td>+Strength</td></tr>
+      <tr><td>Chest</td><td>Ruby</td><td>+Strength</td></tr>
+      <tr><td>Pants</td><td>Ruby</td><td>+Strength</td></tr>
+      <tr><td>Amulet</td><td>Diamond</td><td>+All Resistances</td></tr>
+      <tr><td>Rings</td><td>Diamond</td><td>+All Resistances</td></tr>
+    </table>
+  </div>
+
+  <h2>Runewords</h2>
+
+  <div class="box highlight">
+    <h4 class="g">How Runewords Work</h4>
+    <table style="margin-top:0.5rem">
+      <tr><td><strong>Ritual Rune</strong></td><td>Generates Offering when condition met</td></tr>
+      <tr><td><strong>Invocation Rune</strong></td><td>Triggers effect when enough Offering accumulated</td></tr>
+      <tr><td><strong>Socket Location</strong></td><td>Helm, Chest, Pants, or 2H Weapon (need 2 sockets)</td></tr>
+      <tr><td><strong>Max Runewords</strong></td><td class="y"><strong>2 active at once</strong></td></tr>
+    </table>
+  </div>
+
+  <h3>Endgame Runewords (Priority Order)</h3>
+
+  <div class="box highlight">
+    <h4 class="g">1. Cir + Gar (CRIT CHANCE)</h4>
+    <table style="margin-top:0.5rem">
+      <tr><td><strong>Cir (Ritual)</strong></td><td>Generates offering on specific triggers</td></tr>
+      <tr><td><strong>Gar (Invocation)</strong></td><td class="g"><strong>Up to 25% Critical Strike Chance</strong></td></tr>
+    </table>
+    <p style="margin-top:0.5rem"><strong class="y">Best for:</strong> High attack speed builds (this build). Stacks crit quickly. Essential for hitting 100% crit chance.</p>
+    <p class="dim">Gar is easy to find early. This is your budget-to-BiS runeword.</p>
+  </div>
+
+  <div class="box highlight">
+    <h4 class="g">2. Cem + Ohm (EVADE SYNERGY)</h4>
+    <table style="margin-top:0.5rem">
+      <tr><td><strong>Cem (Ritual)</strong></td><td>Generates offering on Evade</td></tr>
+      <tr><td><strong>Ohm (Invocation)</strong></td><td class="g"><strong>War Cry buff (+15% damage, +Move Speed)</strong></td></tr>
+    </table>
+    <p style="margin-top:0.5rem"><strong class="y">Best for:</strong> This build! You're evading constantly → permanent War Cry uptime.</p>
+  </div>
+
+  <div class="box">
+    <h4 class="b">3. Moni + Ceh (VULNERABLE)</h4>
+    <table style="margin-top:0.5rem">
+      <tr><td><strong>Effect</strong></td><td class="g">Handles Vulnerable uptime automatically</td></tr>
+    </table>
+    <p style="margin-top:0.5rem">Frees you from relying on Condemn for Vulnerable. Good if you want to drop Condemn for another skill.</p>
+  </div>
+
+  <div class="box">
+    <h4>4. Tam + Ohm (CORE SKILL SPAM)</h4>
+    <table style="margin-top:0.5rem">
+      <tr><td><strong>Tam (Ritual)</strong></td><td>Cast Core Skill → 25 Offering</td></tr>
+      <tr><td><strong>Ohm (Invocation)</strong></td><td>600 Offering → War Cry</td></tr>
+    </table>
+    <p style="margin-top:0.5rem">Alternative to Cem+Ohm. Better if you manually cast Blessed Hammer often.</p>
+  </div>
+
+  <div class="box">
+    <h4>5. Bac + Lac (DEFENSE)</h4>
+    <table style="margin-top:0.5rem">
+      <tr><td><strong>Bac (Ritual)</strong></td><td>Travel 5 meters → 50 Offering</td></tr>
+      <tr><td><strong>Lac (Invocation)</strong></td><td>400 Offering → Challenging Shout (DR)</td></tr>
+    </table>
+    <p style="margin-top:0.5rem">Permanent DR while moving. Good for Pit pushing.</p>
+  </div>
+
+  <h3>Leveling Runewords</h3>
+  <div class="box">
+    <table>
+      <tr><th>Runeword</th><th>Effect</th><th>When to Use</th></tr>
+      <tr><td class="g"><strong>Cir + Gar</strong></td><td>Up to 25% Crit Chance</td><td>ASAP - scales into endgame</td></tr>
+      <tr><td>Qua + Cem</td><td>Mobility focused</td><td>Levels 1-30</td></tr>
+      <tr><td>Cem + Lum</td><td>Evade → Resource restore</td><td>If Faith starved early game</td></tr>
+    </table>
+  </div>
+
+  <h3>Rune Sources</h3>
+  <div class="box">
+    <table>
+      <tr><td><strong>Gar</strong></td><td class="g">Common drop - find early</td></tr>
+      <tr><td><strong>Ohm</strong></td><td class="y">Rarer - takes longer to find</td></tr>
+      <tr><td><strong>Cir, Tam</strong></td><td>Fairly common</td></tr>
+    </table>
+    <p style="margin-top:0.5rem" class="dim">Use Cir+Gar until you find Ohm, then swap to Cem+Ohm.</p>
+  </div>
+</section>
+
+<!-- ASPECTS -->
+<section id="aspects">
+  <h1>ASPECTS</h1>
+
+  <h3>Endgame Setup</h3>
+  <div class="box">
+    <table>
+      <tr><th>Slot</th><th>Aspect</th><th>Effect</th></tr>
+      <tr><td>Helm</td><td>Aspect of Firm Decree</td><td>60-100% Armor for 5s when Judging</td></tr>
+      <tr><td>Chest</td><td>Aspect of Disobedience</td><td>0.4-0.8% Armor per hit, stacks to 40%</td></tr>
+      <tr><td>Gloves</td><td>Aspect of Holy Punishment</td><td>Holy/Fire damage +50-70%</td></tr>
+      <tr><td>Pants</td><td>Aspect of the Indomitable</td><td>Up to 140% Armor from Block Chance</td></tr>
+      <tr><td>Boots</td><td>Aspect of Unstoppable Force</td><td>Move speed</td></tr>
+      <tr><td>Amulet</td><td class="g"><strong>Aspect of Ascension</strong></td><td>Stacking damage in Arbiter Form</td></tr>
+      <tr><td>Ring 2</td><td>Aspect of Celestial Strife</td><td>Vuln damage in Arbiter</td></tr>
+    </table>
+  </div>
+
+  <h3>Leveling Aspects (Dungeon Unlocks)</h3>
+  <div class="box">
+    <table>
+      <tr><th>Aspect</th><th>Dungeon</th><th>Region</th></tr>
+      <tr><td>Aspect of Might</td><td>Dark Ravine</td><td>Dry Steppes</td></tr>
+      <tr><td>Aspect of Disobedience</td><td>Halls of the Damned</td><td>Kehjistan</td></tr>
+      <tr><td>Edgemaster's Aspect</td><td>Oldstones</td><td>Scosglen</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- FULL SKILL TREE -->
+<section id="skilltree">
+  <h1>FULL SKILL TREE (71 Points)</h1>
+
+  <h3>Phase 1: Core Setup (Levels 1-14)</h3>
+  <div class="box">
+    <table>
+      <tr><td>1</td><td>Advance</td><td class="dim">Basic mobility + Faith generator</td></tr>
+      <tr><td>2</td><td class="g"><strong>Blessed Hammer</strong></td><td class="g">CORE SKILL</td></tr>
+      <tr><td>3</td><td>Enhanced Blessed Hammer</td><td></td></tr>
+      <tr><td>4</td><td class="g"><strong>Disciple's Halo</strong></td><td class="g">Hammers ORBIT you</td></tr>
+      <tr><td>5</td><td>Defiance Aura</td><td></td></tr>
+      <tr><td>6</td><td>Enhanced Defiance</td><td></td></tr>
+      <tr><td>7</td><td class="p"><strong>Rite of Prayer</strong></td><td class="p">HEALS when aura active</td></tr>
+      <tr><td>8-11</td><td>Blessed Hammer 2/5 → 5/5</td><td>MAX RANK</td></tr>
+      <tr><td>12</td><td>Fanaticism Aura</td><td></td></tr>
+      <tr><td>13</td><td>Enhanced Fanaticism</td><td></td></tr>
+      <tr><td>14</td><td>Rite of Vengeance</td><td></td></tr>
+    </table>
+  </div>
+
+  <h3>Phase 2: Rally + Mobility (Levels 15-25)</h3>
+  <div class="box">
+    <table>
+      <tr><td>15</td><td class="p"><strong>Rally</strong></td><td class="p">YOUR LEFT CLICK</td></tr>
+      <tr><td>16</td><td>Enhanced Rally</td><td></td></tr>
+      <tr><td>17</td><td class="p"><strong>Words of Sacrifice</strong></td><td class="r">NO COOLDOWN - costs HP</td></tr>
+      <tr><td>18</td><td class="g"><strong>Falling Star</strong></td><td class="g">Jump engage</td></tr>
+      <tr><td>19</td><td>Enhanced Falling Star</td><td></td></tr>
+      <tr><td>20</td><td>Freefall</td><td></td></tr>
+      <tr><td>21</td><td class="g"><strong>Condemn</strong></td><td class="g">PULLS + Vulnerable</td></tr>
+      <tr><td>22</td><td>Enhanced Condemn</td><td></td></tr>
+      <tr><td>23</td><td>Gather the Guilty</td><td></td></tr>
+      <tr><td>24</td><td>Enhanced Advance</td><td></td></tr>
+      <tr><td>25</td><td class="g"><strong>Flash of the Blade</strong></td><td class="g">Advance triggers Arbiter</td></tr>
+    </table>
+  </div>
+
+  <h3>Phase 3: Ultimate + Key Passive (Levels 26-35)</h3>
+  <div class="box">
+    <table>
+      <tr><td>26</td><td class="r"><strong>Arbiter of Justice</strong></td><td class="r">ULTIMATE - 100% uptime</td></tr>
+      <tr><td>27</td><td>Enhanced Arbiter</td><td></td></tr>
+      <tr><td>28</td><td>Seraph's Wings</td><td></td></tr>
+      <tr><td>29</td><td>Crack in Armor</td><td></td></tr>
+      <tr><td>30-32</td><td class="p"><strong>High Charity (3 pts)</strong></td><td class="p">+30% healing - sustains Rally</td></tr>
+      <tr><td>33</td><td>Longevity (1/3)</td><td></td></tr>
+      <tr><td>34</td><td>Shining Armor</td><td></td></tr>
+      <tr><td>35</td><td class="y"><strong>EXALTATION</strong></td><td class="r">KEY PASSIVE</td></tr>
+    </table>
+  </div>
+
+  <h3>Phase 4-5: Damage + Survivability (Levels 36-71)</h3>
+  <div class="box">
+    <table>
+      <tr><td>36-38</td><td>Giant Slayer (3 pts)</td><td>+Elite damage</td></tr>
+      <tr><td>39-41</td><td>Righteousness (3 pts)</td><td>+Holy damage</td></tr>
+      <tr><td>42-44</td><td>Discipline (3 pts)</td><td>+Disciple damage</td></tr>
+      <tr><td>45-47</td><td>En Garde (3 pts)</td><td>+Block chance</td></tr>
+      <tr><td>48-50</td><td>Riposte (3 pts)</td><td>+Damage after block</td></tr>
+      <tr><td>51-52</td><td>Longevity (2/3, 3/3)</td><td>+Max Life</td></tr>
+      <tr><td>53-55</td><td>Renewal (3 pts)</td><td>+Healing received</td></tr>
+      <tr><td>56-58</td><td>Master Craftwork (3 pts)</td><td>+Skill damage</td></tr>
+      <tr><td>59-62</td><td>Max Auras (4 pts)</td><td>Defiance + Fanaticism</td></tr>
+      <tr><td>63-71</td><td>Max Rally, Falling Star, Condemn</td><td>Remaining points</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- TROUBLESHOOTING -->
+<section id="problems">
+  <h1>TROUBLESHOOTING</h1>
+
+  <h3>Common Problems</h3>
+  <div class="box warn">
+    <table>
+      <tr><td class="r"><strong>No Faith (early game)</strong></td><td>Use <strong>Advance</strong> between Hammer casts. 2 Advance : 1 Hammer ratio.</td></tr>
+      <tr><td class="r"><strong>Can't hit anything</strong></td><td>Get in MELEE range. Advance INTO enemies.</td></tr>
+      <tr><td class="r"><strong>Arbiter keeps dropping</strong></td><td>Stack more CDR. Temper Arbiter Duration on amulet.</td></tr>
+      <tr><td class="r"><strong>Low damage</strong></td><td>Rush Castle paragon board. Check armor stacking.</td></tr>
+      <tr><td class="r"><strong>Dying to Rally HP cost</strong></td><td>Keep Defiance Aura ON. Get High Charity passives (30% healing).</td></tr>
+      <tr><td class="r"><strong>Evade on cooldown</strong></td><td>Need boots with "Attacks Reduce Evade Cooldown" affix.</td></tr>
+      <tr><td class="r"><strong>Build feels slow</strong></td><td>Get Argent Veil ring. Without it, you have to manually cast hammers.</td></tr>
+    </table>
+  </div>
+
+  <h3>Gear Checklist</h3>
+  <div class="box highlight">
+    <table>
+      <tr><td>☐</td><td>Argent Veil equipped?</td><td>Ring slot</td></tr>
+      <tr><td>☐</td><td>Herald's Morningstar equipped?</td><td>Weapon slot</td></tr>
+      <tr><td>☐</td><td>Herald of Zakarum equipped?</td><td>Shield slot</td></tr>
+      <tr><td>☐</td><td class="r">Boots have "Attacks reduce Evade CD"?</td><td class="r"><strong>CRITICAL</strong></td></tr>
+      <tr><td>☐</td><td class="r">Amulet tempered with Arbiter Duration?</td><td class="r"><strong>CRITICAL</strong></td></tr>
+      <tr><td>☐</td><td>CDR on Amulet + Rings?</td><td>100% Arbiter uptime</td></tr>
+      <tr><td>☐</td><td>Castle paragon board completed?</td><td>Armor = Damage</td></tr>
+    </table>
+  </div>
+
+  <h3>Stats to IGNORE</h3>
+  <div class="box">
+    <ul>
+      <li><strong>Lucky Hit Chance</strong> - not needed for this build</li>
+      <li><strong>Resource Cost Reduction</strong> - Rally costs HP, not resource</li>
+      <li><strong>Life Regeneration</strong> - we heal via Rite of Prayer + Defiance Aura</li>
+    </ul>
+  </div>
+
+  <h3>Build Planners</h3>
+  <div class="box">
+    <ul>
+      <li><a href="https://maxroll.gg/d4/build-guides/blessed-hammer-paladin-guide" target="_blank">Maxroll Guide</a></li>
+      <li><a href="https://maxroll.gg/d4/planner" target="_blank">Maxroll Planner</a></li>
+      <li><a href="https://d4builds.gg/build-planner/" target="_blank">D4Builds</a></li>
+      <li><a href="https://mobalytics.gg/diablo-4/builds/paladin-blessed-hammer-mekuna" target="_blank">Mobalytics</a></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+</div>
+
+<script>
+// Simple section navigation
+document.querySelectorAll('nav a').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const sectionId = link.dataset.section;
+
+    // Hide all sections, show selected
+    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+    document.getElementById(sectionId).classList.add('active');
+
+    // Update nav highlighting
+    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+    link.classList.add('active');
+
+    // Scroll to top on mobile
+    window.scrollTo(0, 0);
+  });
+});
+</script>
+
+</body>
+</html>
