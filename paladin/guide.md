@@ -293,6 +293,8 @@ Look for ANY of these on drops:
 
 ## LEGENDARY ASPECTS (BY SLOT)
 
+**Note:** Aspects only apply to legendary items. Unique items cannot have aspects imprinted. Use these aspects on legendary placeholders while farming for BiS uniques.
+
 ### Leveling Aspects (Dungeon Unlocks)
 | Aspect | Dungeon | Region | Priority |
 |--------|---------|--------|----------|
@@ -300,20 +302,20 @@ Look for ANY of these on drops:
 | Aspect of Disobedience | Halls of the Damned | Kehjistan | High |
 | Edgemaster's Aspect | Oldstones | Scosglen | Medium |
 
-### Endgame Setup
+### Endgame Legendary Setup (Before Uniques)
 
-| Slot | Aspect | Effect |
-|------|--------|--------|
-| **Helm** | Aspect of Firm Decree | 60-100% Armor for 5s when Judging enemies |
-| **Chest** | Aspect of Disobedience | 0.4-0.8% Armor per hit, stacks to 25-40% |
-| **Gloves** | Aspect of Holy Punishment | Holy/Fire damage +50-70% |
-| **Pants** | Aspect of the Indomitable | Up to 100-140% Armor from Block Chance |
-| **Boots** | Aspect of the Arbiter's Zephyr | Reduces Arbiter Evade CD by 1-3s |
-| **Amulet** | Aspect of Ascension | Stacking damage in Arbiter Form (BEST) |
-| **Ring 1** | Aspect of the Judicator | Judgement explosion +40-60% size/damage |
-| **Ring 2** | Aspect of Utmost Glory | +20-35% damage while Healthy (doubled vs Weakened) |
-| **Weapon** | Aspect of Watkins' Law | Judicator Skills +45-65% vs Judged enemies |
-| **Shield** | Aspect of Exorcism | Holy damage has 5-25% Execute chance |
+| Slot | Aspect | Effect | BiS Unique Replaces |
+|------|--------|--------|---------------------|
+| **Helm** | Aspect of Firm Decree | 60-100% Armor for 5s when Judging | Heir of Perdition / Harlequin Crest |
+| **Chest** | Aspect of Disobedience | Armor stacking per hit | Shroud of False Death / Heir of Perdition |
+| **Gloves** | Aspect of Holy Punishment | Holy/Fire damage +50-70% | *(stays legendary)* |
+| **Pants** | Aspect of the Indomitable | Armor from Block Chance | *(stays legendary)* |
+| **Boots** | Aspect of the Arbiter's Zephyr | Reduces Arbiter Evade CD | *(stays legendary)* |
+| **Amulet** | Aspect of Ascension | Stacking Arbiter damage | Sanctis of Kethamar |
+| **Ring 1** | Aspect of the Judicator | Judgement explosion size | Argent Veil |
+| **Ring 2** | Aspect of Utmost Glory | Damage while Healthy | Ring of Starless Skies / Seal of Second Trumpet |
+| **Weapon** | Aspect of Watkins' Law | Damage vs Judged enemies | Herald's Morningstar |
+| **Shield** | Aspect of Exorcism | Holy Execute chance | Herald of Zakarum |
 
 ### Alternative Aspects
 | Aspect | Use Case |
@@ -327,23 +329,42 @@ Look for ANY of these on drops:
 
 ## UNIQUE ITEMS (PRIORITY ORDER)
 
-### Must-Have
+### Gear Progression Overview
+
+| Slot | BiS Unique | Stays Legendary? |
+|------|------------|------------------|
+| Weapon | Herald's Morningstar | No |
+| Shield | Herald of Zakarum | No |
+| Helm | Heir of Perdition / Harlequin Crest | No |
+| Chest | Shroud of False Death / Heir of Perdition | No |
+| **Gloves** | - | **Yes (always legendary)** |
+| **Pants** | - | **Yes (always legendary)** |
+| **Boots** | - | **Yes (always legendary)** |
+| Amulet | Sanctis of Kethamar | No |
+| Ring 1 | Argent Veil | No |
+| Ring 2 | Ring of Starless Skies / Seal of Second Trumpet | No |
+
+### Must-Have (Get First)
 | Item | Slot | Why |
 |------|------|-----|
-| **Argent Veil** | Ring | BUILD-DEFINING. Auto-casts Blessed Hammer every 2m during Evade |
+| **Argent Veil** | Ring 1 | BUILD-DEFINING. Auto-casts Blessed Hammer every 2m during Evade |
 | **Herald's Morningstar** | Weapon | +Hammer ranks, +Hammer damage, spawns extra hammers |
+
+### Ring 2 Choice (Oath-Dependent)
+| Item | Best For | Effect |
+|------|----------|--------|
+| **Ring of Starless Skies** | Disciple Oath | Core skill scaling, Faith spending damage |
+| **Seal of the Second Trumpet** | Judicator Oath | Judgement double damage chance |
 
 ### Best-in-Slot
 | Item | Slot | Effect |
 |------|------|--------|
-| Heir of Perdition | Helm/Chest | Roughly DOUBLES damage |
+| Heir of Perdition | Helm OR Chest | Roughly DOUBLES damage (can only wear one) |
 | Shroud of False Death | Chest | +1 all Passives, 50-60% damage gain |
-| Herald of Zakarum | Shield | Block Chance, Armor scaling |
-| Ring of Starless Skies | Ring | +Core Skills, Faith spending damage |
-| Seal of the Second Trumpet | Ring | Judgement double damage chance |
+| Herald of Zakarum | Shield | Block Chance, Armor scaling for Castle |
 | Sanctis of Kethamar | Amulet | Double damage for Arbiter attacks |
 
-### Comfort Options
+### Comfort/Defense Options
 | Item | Slot | Effect |
 |------|------|--------|
 | Harlequin Crest | Helm | 20% DR, CDR, +4 All Skills |
@@ -423,20 +444,27 @@ You can have **2 Runewords** total. Place in Helm, Chest, Pants, or 2H Weapon.
 
 ## TEMPERING (COMPLETE)
 
-### By Slot
+**Note:** Legendary items have 2 temper slots. Uniques have 1-2 temper slots depending on the item. Prioritize damage tempers on legendaries that will stay legendary (Gloves/Pants/Boots).
 
-| Slot | Temper 1 | Temper 2 | Manual |
-|------|----------|----------|--------|
-| **Helm** | Maximum Life | Armor | Worldly Endurance |
-| **Chest** | Maximum Life | Armor | Worldly Endurance |
-| **Gloves** | Disciple/Judicator Damage | Attack Speed | Class Finesse |
-| **Pants** | Maximum Life | Armor | Worldly Endurance |
-| **Boots** | Movement Speed | Evade CD Reduction | Natural Motion |
-| **Amulet** | Disciple/Judicator Damage | Cooldown Reduction | Class Finesse |
-| **Ring 1** | Disciple/Judicator Damage | Crit Damage | Class Finesse |
-| **Ring 2** | Disciple/Judicator Damage | Crit Damage | Class Finesse |
-| **Weapon** | Blessed Hammer Double Damage | Disciple Damage | Weapon Augment |
-| **Shield** | En Garde (until 100% Block) | Arbiter Duration | Class Guard |
+### Always Legendary Slots (Full Temper Investment)
+
+| Slot | Temper 1 | Temper 2 | Manual 1 | Manual 2 |
+|------|----------|----------|----------|----------|
+| **Gloves** | Disciple/Judicator Damage | Attack Speed | Paladin Finesse | Worldly Finesse |
+| **Pants** | Maximum Life | Armor | Worldly Endurance | Worldly Endurance |
+| **Boots** | Movement Speed | Evade Grants MS | Natural Motion | Natural Motion |
+
+### Unique Target Slots (Legendary Placeholder Tempers)
+
+| Slot | Temper 1 | Temper 2 | Notes |
+|------|----------|----------|-------|
+| **Helm** | Maximum Life | Armor | Replace with unique when found |
+| **Chest** | Maximum Life | Armor | Replace with unique when found |
+| **Amulet** | Disciple/Judicator Damage | Cooldown Reduction | Replace with Sanctis of Kethamar |
+| **Ring 1** | Disciple Damage | Cooldown Reduction | Replace with Argent Veil |
+| **Ring 2** | Disciple Damage | Cooldown Reduction | Replace with Ring of Starless Skies |
+| **Weapon** | Hammer Double Damage | Disciple Damage | Herald's Morningstar still needs tempers |
+| **Shield** | En Garde Ranks | Arbiter Duration | Herald of Zakarum still needs tempers |
 
 ### Priority Tempers
 1. **Blessed Hammer Double Damage** (Weapon) - until ~100% chance
@@ -445,14 +473,21 @@ You can have **2 Runewords** total. Place in Helm, Chest, Pants, or 2H Weapon.
 4. **Disciple/Judicator Damage** - scaling
 5. **Attack Speed** / **Cooldown Reduction** - QoL
 
-### Leveling Tempering
-"Tempering low level gear is relatively cheap and the results can be very impactful."
-- Elemental Surge weapon tempers have high base damage
-- Worth tempering even blue gear if you find good bases
+### Temper Manual Reference
+
+| Manual | Temper Options |
+|--------|----------------|
+| Paladin Finesse | Disciple Skill Damage, Judicator Skill Damage |
+| Paladin Augments | Blessed Hammer Double Damage, Damage in Arbiter Form |
+| Paladin Guard | En Garde Ranks, Arbiter Duration |
+| Worldly Endurance | Maximum Life, Armor |
+| Worldly Finesse | Attack Speed, Cooldown Reduction |
+| Natural Motion | Movement Speed, Evade Grants Movement Speed |
 
 ### Notes
-- If Herald's Morningstar has Greater Affix on "Double Damage", swap weapon temper to "Damage in Arbiter Form"
+- If Herald's Morningstar has Greater Affix on "Double Damage", use "Damage in Arbiter Form" temper instead
 - Judicator Damage for Judicator Oath, Disciple Damage for Disciple Oath
+- Tempering low level gear is cheap and impactful while leveling
 
 ---
 
@@ -572,7 +607,8 @@ Focus 12/12 on these affixes (in order):
 4. Damage Reduction
 5. +Ranks to Defensive Skills
 
-### Rings
+### Rings (Legendary Placeholders)
+*These stats are for legendary rings before getting Argent Veil / Ring of Starless Skies*
 1. Critical Strike Chance
 2. Critical Strike Damage
 3. Vulnerable Damage

@@ -73,9 +73,15 @@ Falling Star -> Condemn -> Hammer x3 -> Evade spam
 
 ## KEY UNIQUES
 
-1. **Argent Veil** (Ring) - Evade spawns hammers
-2. **Herald's Morningstar** (Weapon) - Best mace
-3. **Heir of Perdition** - Doubles damage
+| Priority | Item | Slot |
+|----------|------|------|
+| 1 | **Argent Veil** | Ring 1 (BUILD DEFINING) |
+| 2 | **Herald's Morningstar** | Weapon |
+| 3 | **Heir of Perdition** | Helm/Chest (doubles damage) |
+| 4 | **Ring of Starless Skies** | Ring 2 (Disciple) |
+| 4 | **Seal of Second Trumpet** | Ring 2 (Judicator) |
+
+**Always Legendary:** Gloves, Pants, Boots
 
 ---
 
@@ -108,30 +114,43 @@ Falling Star -> Condemn -> Hammer x3 -> Evade spam
 
 ## TEMPERING
 
+### Always Legendary (invest fully)
+| Slot | Temper 1 | Temper 2 |
+|------|----------|----------|
+| Gloves | Disciple Damage | Attack Speed |
+| Pants | Max Life | Armor |
+| Boots | Movement Speed | Evade Grants MS |
+
+### Weapon/Shield (keep on uniques too)
+| Slot | Temper 1 | Temper 2 |
+|------|----------|----------|
+| Weapon | Hammer Double Damage | Disciple Damage |
+| Shield | En Garde (Block) | Arbiter Duration |
+
+### Legendary Placeholders
 | Slot | Temper |
 |------|--------|
-| Weapon | Hammer Double Damage |
-| Shield | En Garde (Block) |
-| Jewelry | Disciple Damage |
-| Armor | Max Life |
-| Boots | Movement Speed |
+| Rings | Disciple Damage + CDR |
+| Amulet | Disciple Damage + CDR |
 
 ---
 
-## ASPECTS
+## ASPECTS (Legendary Placeholders)
 
-| Slot | Aspect |
-|------|--------|
-| Helm | Firm Decree |
-| Chest | Disobedience |
-| Gloves | Holy Punishment |
-| Pants | Indomitable |
-| Boots | Arbiter's Zephyr |
-| Amulet | Ascension |
-| Ring 1 | Judicator |
-| Ring 2 | Utmost Glory |
-| Weapon | Watkins' Law |
-| Shield | Exorcism |
+*Use on legendaries until you get BiS uniques*
+
+| Slot | Aspect | BiS Unique |
+|------|--------|------------|
+| Helm | Firm Decree | Heir of Perdition |
+| Chest | Disobedience | Shroud of False Death |
+| **Gloves** | **Holy Punishment** | *(stays legendary)* |
+| **Pants** | **Indomitable** | *(stays legendary)* |
+| **Boots** | **Arbiter's Zephyr** | *(stays legendary)* |
+| Amulet | Ascension | Sanctis of Kethamar |
+| Ring 1 | Judicator | Argent Veil |
+| Ring 2 | Utmost Glory | Ring of Starless Skies |
+| Weapon | Watkins' Law | Herald's Morningstar |
+| Shield | Exorcism | Herald of Zakarum |
 
 ---
 

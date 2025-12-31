@@ -69,158 +69,312 @@
 
 ---
 
-## GEAR SLOTS
+## GEAR OVERVIEW
 
-### WEAPON (Mace)
-**Target:** Herald's Morningstar (Unique)
+### Slot Summary
 
-| Stat | Priority |
-|------|----------|
-| +Blessed Hammer | 1 |
-| Crit Damage | 2 |
-| Vulnerable Damage | 3 |
-| Strength | 4 |
-
-**Temper:** Blessed Hammer Double Damage
-**Gem:** Emerald
-
----
-
-### SHIELD
-**Target:** Herald of Zakarum (Unique)
-
-| Stat | Priority |
-|------|----------|
-| Block Chance | 1 (cap 100%) |
-| Crit Chance | 2 |
-| Cooldown Reduction | 3 |
-| Armor | 4 |
-
-**Temper:** En Garde (until 100% Block)
+| Slot | BiS Unique | Stays Legendary? |
+|------|------------|------------------|
+| Weapon | Herald's Morningstar | No |
+| Shield | Herald of Zakarum | No |
+| Helm | Heir of Perdition / Harlequin Crest | No |
+| Chest | Shroud of False Death / Heir of Perdition | No |
+| **Gloves** | - | **Yes** |
+| **Pants** | - | **Yes** |
+| **Boots** | - | **Yes** |
+| Amulet | Sanctis of Kethamar | No |
+| Ring 1 | Argent Veil | No |
+| Ring 2 | Ring of Starless Skies / Seal of Second Trumpet | No |
 
 ---
 
-### HELM
-**Target:** Heir of Perdition or Harlequin Crest
+## GEAR TIERS
 
-| Stat | Priority |
-|------|----------|
-| Cooldown Reduction | 1 |
-| Maximum Life | 2 |
-| Strength | 3 |
-| Armor | 4 |
+### TIER 1: STARTER (Fresh 50)
+All legendary gear with aspects. Focus on getting correct stats.
 
-**Aspect:** Aspect of Firm Decree
-**Temper:** Maximum Life
-**Gem:** Ruby
+### TIER 2: CORE BUILD
+Got the essential uniques that define the build:
+- **Argent Veil** (Ring) - BUILD DEFINING
+- **Herald's Morningstar** (Weapon) - massive hammer scaling
+- Rest is legendary with proper aspects
 
----
-
-### CHEST
-**Target:** Shroud of False Death or Heir of Perdition
-
-| Stat | Priority |
-|------|----------|
-| Maximum Life | 1 |
-| Strength | 2 |
-| Armor | 3 |
-| Damage Reduction | 4 |
-
-**Aspect:** Aspect of Disobedience
-**Temper:** Maximum Life
-**Gem:** Ruby
+### TIER 3: FULL BiS
+All unique slots filled, legendary slots perfected:
+- All 7 unique slots have their target uniques
+- Gloves/Pants/Boots are well-rolled legendaries with proper aspects/tempers
 
 ---
+
+## ALWAYS LEGENDARY SLOTS
+
+These slots have no BiS unique - invest in good legendaries with proper aspects and tempers.
 
 ### GLOVES
 
-| Stat | Priority |
-|------|----------|
+| Affix | Priority |
+|-------|----------|
 | Crit Chance | 1 |
 | Crit Damage | 2 |
 | Attack Speed | 3 |
 | Cooldown Reduction | 4 |
 
-**Aspect:** Aspect of Holy Punishment
-**Temper:** Disciple Damage
+| | |
+|---|---|
+| **Aspect** | Aspect of Holy Punishment |
+| **Temper 1** | Disciple/Judicator Skill Damage (Paladin Finesse) |
+| **Temper 2** | Attack Speed (Worldly Finesse) |
 
 ---
 
 ### PANTS
 
-| Stat | Priority |
-|------|----------|
+| Affix | Priority |
+|-------|----------|
 | Maximum Life | 1 |
 | Armor | 2 |
 | Strength | 3 |
 | Damage Reduction | 4 |
 
-**Aspect:** Aspect of the Indomitable
-**Temper:** Maximum Life
-**Gem:** Ruby
+| | |
+|---|---|
+| **Aspect** | Aspect of the Indomitable |
+| **Temper 1** | Maximum Life (Worldly Endurance) |
+| **Temper 2** | Armor (Worldly Endurance) |
+| **Gem** | Ruby |
 
 ---
 
 ### BOOTS
 
-| Stat | Priority |
-|------|----------|
-| **Evade CD Reduction** | 1 (CRITICAL) |
+| Affix | Priority |
+|-------|----------|
+| Evade CD Reduction | 1 **(CRITICAL)** |
 | Movement Speed | 2 |
 | Strength | 3 |
 | Armor | 4 |
 
-**Aspect:** Aspect of the Arbiter's Zephyr
-**Temper:** Movement Speed
+| | |
+|---|---|
+| **Aspect** | Aspect of the Arbiter's Zephyr |
+| **Temper 1** | Movement Speed (Natural Motion) |
+| **Temper 2** | Evade Grants Movement Speed (Natural Motion) |
+
+---
+
+## UNIQUE TARGET SLOTS
+
+For each slot: what to use UNTIL you get the unique, then what the BiS unique is.
+
+---
+
+### WEAPON
+
+| Stage | Item |
+|-------|------|
+| **BiS** | **Herald's Morningstar** |
+| Until BiS | Legendary Mace with Aspect of Watkins' Law |
+
+**Legendary Affixes:**
+
+| Affix | Priority |
+|-------|----------|
+| +Ranks to Blessed Hammer | 1 |
+| Crit Damage | 2 |
+| Vulnerable Damage | 3 |
+| Strength | 4 |
+
+| | |
+|---|---|
+| **Aspect (legendary only)** | Aspect of Watkins' Law |
+| **Temper 1** | Blessed Hammer Double Damage (Paladin Augments) |
+| **Temper 2** | Disciple Skill Damage (Paladin Finesse) |
+| **Gem** | Emerald |
+
+**Note:** If Herald's Morningstar has Greater Affix on Double Damage, use "Damage in Arbiter Form" temper instead.
+
+---
+
+### SHIELD
+
+| Stage | Item |
+|-------|------|
+| **BiS** | **Herald of Zakarum** |
+| Until BiS | Legendary Shield with Aspect of Exorcism |
+
+**Legendary Affixes:**
+
+| Affix | Priority |
+|-------|----------|
+| Block Chance | 1 (until 100%) |
+| Crit Chance | 2 |
+| Cooldown Reduction | 3 |
+| Armor | 4 |
+
+| | |
+|---|---|
+| **Aspect (legendary only)** | Aspect of Exorcism |
+| **Temper 1** | En Garde Ranks (Paladin Guard) - until 100% Block |
+| **Temper 2** | Arbiter Duration (Paladin Guard) |
+
+---
+
+### HELM
+
+| Stage | Item |
+|-------|------|
+| **BiS (Damage)** | **Heir of Perdition** |
+| **BiS (Defense)** | **Harlequin Crest** |
+| Until BiS | Legendary Helm with Aspect of Firm Decree |
+
+**Legendary Affixes:**
+
+| Affix | Priority |
+|-------|----------|
+| Cooldown Reduction | 1 |
+| Maximum Life | 2 |
+| Strength | 3 |
+| Armor | 4 |
+
+| | |
+|---|---|
+| **Aspect (legendary only)** | Aspect of Firm Decree |
+| **Temper 1** | Maximum Life (Worldly Endurance) |
+| **Temper 2** | Armor (Worldly Endurance) |
+| **Gem** | Ruby |
+
+**Note:** Heir of Perdition roughly DOUBLES damage. Can be worn in Helm OR Chest (not both).
+
+---
+
+### CHEST
+
+| Stage | Item |
+|-------|------|
+| **BiS (if Heir in Helm)** | **Shroud of False Death** |
+| **BiS (if no Heir yet)** | **Heir of Perdition** |
+| **BiS (Defense)** | **Tyrael's Might** |
+| Until BiS | Legendary Chest with Aspect of Disobedience |
+
+**Legendary Affixes:**
+
+| Affix | Priority |
+|-------|----------|
+| Maximum Life | 1 |
+| Strength | 2 |
+| Armor | 3 |
+| Damage Reduction | 4 |
+
+| | |
+|---|---|
+| **Aspect (legendary only)** | Aspect of Disobedience |
+| **Temper 1** | Maximum Life (Worldly Endurance) |
+| **Temper 2** | Armor (Worldly Endurance) |
+| **Gem** | Ruby |
 
 ---
 
 ### AMULET
-**Target:** Sanctis of Kethamar (Unique)
 
-| Stat | Priority |
-|------|----------|
+| Stage | Item |
+|-------|------|
+| **BiS** | **Sanctis of Kethamar** |
+| Until BiS | Legendary Amulet with Aspect of Ascension |
+
+**Legendary Affixes:**
+
+| Affix | Priority |
+|-------|----------|
 | Cooldown Reduction | 1 |
-| +Core Skills | 2 |
+| +Ranks to Core Skills | 2 |
 | Movement Speed | 3 |
 | Damage Reduction | 4 |
 
-**Aspect:** Aspect of Ascension
-**Temper:** Disciple Damage
-**Gem:** Diamond
+| | |
+|---|---|
+| **Aspect (legendary only)** | Aspect of Ascension |
+| **Temper 1** | Disciple/Judicator Skill Damage (Paladin Finesse) |
+| **Temper 2** | Cooldown Reduction (Worldly Finesse) |
+| **Gem** | Diamond |
+
+---
+
+## RINGS (SPECIAL SECTION)
+
+### The Ring Situation
+
+You have 2 ring slots but 3 potential BiS uniques:
+
+| Unique | Effect | Best For |
+|--------|--------|----------|
+| **Argent Veil** | Evade spawns Blessed Hammers every 2m traveled | ALWAYS (build-defining) |
+| **Ring of Starless Skies** | Core skill damage scaling, Faith spending bonus | Disciple Oath |
+| **Seal of Second Trumpet** | Judgement has chance to deal double damage | Judicator Oath |
+
+### Ring Loadouts
+
+**Disciple Oath (Speed/General):**
+| Slot | Unique |
+|------|--------|
+| Ring 1 | **Argent Veil** |
+| Ring 2 | **Ring of Starless Skies** |
+
+**Judicator Oath (Push/Boss):**
+| Slot | Unique |
+|------|--------|
+| Ring 1 | **Argent Veil** |
+| Ring 2 | **Seal of Second Trumpet** |
 
 ---
 
 ### RING 1
-**Target:** Argent Veil (Unique) - BUILD DEFINING
 
-If no Argent Veil yet:
-| Stat | Priority |
-|------|----------|
+| Stage | Item |
+|-------|------|
+| **BiS** | **Argent Veil** (ALWAYS) |
+| Until BiS | Legendary Ring with Aspect of the Judicator |
+
+**Legendary Affixes (until you get Argent Veil):**
+
+| Affix | Priority |
+|-------|----------|
 | Crit Chance | 1 |
 | Crit Damage | 2 |
 | Vulnerable Damage | 3 |
 | Cooldown Reduction | 4 |
 
-**Aspect:** Aspect of the Judicator
-**Temper:** Disciple Damage
-**Gem:** Diamond
+| | |
+|---|---|
+| **Aspect (legendary only)** | Aspect of the Judicator |
+| **Temper 1 (legendary only)** | Disciple Skill Damage (Paladin Finesse) |
+| **Temper 2 (legendary only)** | Cooldown Reduction (Worldly Finesse) |
+| **Gem** | Diamond |
 
 ---
 
 ### RING 2
-**Target:** Ring of Starless Skies (Unique)
 
-| Stat | Priority |
-|------|----------|
+| Stage | Item |
+|-------|------|
+| **BiS (Disciple)** | **Ring of Starless Skies** |
+| **BiS (Judicator)** | **Seal of Second Trumpet** |
+| Until BiS | Legendary Ring with Aspect of Utmost Glory |
+
+**Legendary Affixes (until you get BiS unique):**
+
+| Affix | Priority |
+|-------|----------|
 | Crit Chance | 1 |
 | Crit Damage | 2 |
 | Cooldown Reduction | 3 |
 | Attack Speed | 4 |
 
-**Aspect:** Aspect of Utmost Glory
-**Temper:** Disciple Damage
-**Gem:** Diamond
+| | |
+|---|---|
+| **Aspect (legendary only)** | Aspect of Utmost Glory |
+| **Temper 1 (legendary only)** | Disciple Skill Damage (Paladin Finesse) |
+| **Temper 2 (legendary only)** | Cooldown Reduction (Worldly Finesse) |
+| **Gem** | Diamond |
 
 ---
 
@@ -250,17 +404,18 @@ If no Argent Veil yet:
 
 ---
 
-## UNIQUES PRIORITY
+## UNIQUES PRIORITY (Farm Order)
 
-| Priority | Item | Slot |
-|----------|------|------|
-| 1 | **Argent Veil** | Ring |
-| 2 | **Herald's Morningstar** | Weapon |
-| 3 | Heir of Perdition | Helm/Chest |
-| 4 | Shroud of False Death | Chest |
-| 5 | Herald of Zakarum | Shield |
-| 6 | Ring of Starless Skies | Ring |
-| 7 | Harlequin Crest | Helm |
+| Priority | Item | Slot | Why |
+|----------|------|------|-----|
+| 1 | **Argent Veil** | Ring | BUILD DEFINING - get this first |
+| 2 | **Herald's Morningstar** | Weapon | Massive hammer scaling |
+| 3 | **Heir of Perdition** | Helm/Chest | Roughly doubles damage |
+| 4 | **Herald of Zakarum** | Shield | Armor scaling for Castle |
+| 5 | **Shroud of False Death** | Chest | +1 passives, damage boost |
+| 6 | **Ring of Starless Skies** | Ring | Core skill scaling |
+| 7 | **Sanctis of Kethamar** | Amulet | Double Arbiter damage |
+| 8 | **Harlequin Crest** | Helm | Comfort/defense option |
 
 ---
 
@@ -288,12 +443,14 @@ If no Argent Veil yet:
 
 ## MASTERWORKING ORDER
 
-1. Weapon - Strength or Crit Damage
-2. Gloves - Crit Chance
-3. Rings - Crit Damage
-4. Amulet - Crit Chance
-5. Shield - Armor
-6. Armor pieces - Armor
+| Priority | Slot | Target Affix |
+|----------|------|--------------|
+| 1 | Weapon | Strength or Crit Damage |
+| 2 | Gloves | Crit Chance |
+| 3 | Rings | Crit Damage |
+| 4 | Amulet | Crit Chance |
+| 5 | Shield | Armor |
+| 6 | Armor | Armor (for Castle scaling) |
 
 ---
 
